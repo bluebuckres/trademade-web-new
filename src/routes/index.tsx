@@ -48,7 +48,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorBoundary />
   },
   {
-    path: '/refund',
+    path: '/refund-policy',
     element: <RefundPolicy />,
     errorElement: <ErrorBoundary />
   },
