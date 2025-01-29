@@ -1,22 +1,38 @@
-// Mock Firebase configuration
-import { Auth, User } from 'firebase/auth';
-import { Firestore } from 'firebase/firestore';
+// Local authentication configuration
+interface User {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+}
 
-// Mock auth object
-const mockAuth = {
+interface Auth {
+  currentUser: User | null;
+  onAuthStateChanged: (callback: (user: User | null) => void) => () => void;
+  signInWithEmailAndPassword: (email: string, password: string) => Promise<{ user: User | null }>;
+  createUserWithEmailAndPassword: (email: string, password: string) => Promise<{ user: User | null }>;
+  signOut: () => Promise<void>;
+}
+
+interface DB {
+  collection: (name: string) => any;
+  doc: (path: string) => any;
+}
+
+const localAuth = {
   currentUser: null,
   onAuthStateChanged: (callback: (user: User | null) => void) => {
     callback(null);
     return () => {};
   },
-  signInWithEmailAndPassword: () => Promise.resolve({ user: null }),
-  createUserWithEmailAndPassword: () => Promise.resolve({ user: null }),
-  signOut: () => Promise.resolve()
-} as unknown as Auth;
+  signInWithEmailAndPassword: async () => ({ user: null }),
+  createUserWithEmailAndPassword: async () => ({ user: null }),
+  signOut: async () => {}
+} as Auth;
 
-// Mock firestore object
-const mockDb = {} as Firestore;
+const localDb = {
+  collection: () => ({}),
+  doc: () => ({})
+} as DB;
 
-export const auth = mockAuth;
-export const db = mockDb;
-export const getUserProfile = () => Promise.resolve(null);
+export const auth = localAuth;
+export const db = localDb;
