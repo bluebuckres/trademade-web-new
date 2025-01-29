@@ -10,8 +10,13 @@ interface OTPData {
 const OTP_COLLECTION = 'otps';
 const OTP_EXPIRY_MINUTES = 10;
 
+const generateOTPCode = (): string => {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+};
+
 export const generateOTP = async (email: string): Promise<string> => {
-  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  const otp = generateOTPCode();
+  // TODO: Implement email sending logic
   return otp;
 };
 
@@ -31,7 +36,8 @@ export const saveOTP = async (userId: string, email: string): Promise<string> =>
 };
 
 export const verifyOTP = async (email: string, otp: string): Promise<boolean> => {
-  return true; // Implement your own verification logic
+  // TODO: Implement OTP verification logic
+  return true;
 };
 
 export const verifyOTPFromDB = async (userId: string, inputOTP: string): Promise<boolean> => {

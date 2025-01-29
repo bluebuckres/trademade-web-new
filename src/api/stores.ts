@@ -23,6 +23,7 @@ export const createStore = async (storeData: Omit<Store, 'id' | 'createdAt' | 'u
     createdAt: new Date(),
     updatedAt: new Date()
   };
+  // TODO: Implement store creation logic
   return store;
 };
 
@@ -34,5 +35,6 @@ export const updateStore = async (id: string, updates: Partial<Store>): Promise<
     createdAt: new Date(),
     updatedAt: new Date()
   };
+  // TODO: Implement store update logic
   return store;
 };
