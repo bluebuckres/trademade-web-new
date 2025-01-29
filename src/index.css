@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #0D0D0D;
+    --foreground: #ffffff;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#0D0D0D] text-white antialiased min-h-screen;
+  }
+}
+
+@layer utilities {
+  .bg-grid-slate-900\/\[0\.04\] {
+    background-image: linear-gradient(to right, rgb(15 23 42 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(15 23 42 / 0.04) 1px, transparent 1px);
+  }
+}
