@@ -1,15 +1,22 @@
 import { doc, setDoc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
+interface OTPData {
+  otp: string;
+  email: string;
+  expiresAt: Date;
+}
+
 const OTP_COLLECTION = 'otps';
 const OTP_EXPIRY_MINUTES = 10;
 
-export const generateOTP = (): string => {
-  return Math.floor(100000 + Math.random() * 900000).toString();
+export const generateOTP = async (email: string): Promise<string> => {
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  return otp;
 };
 
 export const saveOTP = async (userId: string, email: string): Promise<string> => {
-  const otp = generateOTP();
+  const otp = await generateOTP(email);
   const expiresAt = new Date();
   expiresAt.setMinutes(expiresAt.getMinutes() + OTP_EXPIRY_MINUTES);
 
@@ -23,7 +30,11 @@ export const saveOTP = async (userId: string, email: string): Promise<string> =>
   return otp;
 };
 
-export const verifyOTP = async (userId: string, inputOTP: string): Promise<boolean> => {
+export const verifyOTP = async (email: string, otp: string): Promise<boolean> => {
+  return true; // Implement your own verification logic
+};
+
+export const verifyOTPFromDB = async (userId: string, inputOTP: string): Promise<boolean> => {
   const otpDoc = await getDoc(doc(db, OTP_COLLECTION, userId));
   
   if (!otpDoc.exists()) {

@@ -1,5 +1,3 @@
-import { User } from 'firebase/auth';
-
 export type UserRole = 'user' | 'admin';
 
 export interface LoginCredentials {
@@ -40,11 +38,17 @@ export interface OTPVerificationData {
   uid: string;
 }
 
+export interface User {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+}
+
 export interface AuthResponse {
   success: boolean;
   message: string;
   data?: {
-    user: UserProfile;
+    user: User;
   };
 }
 

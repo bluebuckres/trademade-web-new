@@ -14,12 +14,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "env": {
-    "VITE_NODE_ENV": "production",
-    "VITE_API_URL": "@api-url",
-    "VITE_AWS_ACCESS_KEY_ID": "@aws-access-key-id",
-    "VITE_AWS_SECRET_ACCESS_KEY": "@aws-secret-access-key",
-    "VITE_AWS_REGION": "@aws-region"
-  }
+  ]
 }

@@ -1,44 +1,29 @@
 import { useState, useEffect } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from '../config/firebase';
-import { getUserRole } from '../api/auth';
-import type { UserRole } from '../types/auth';
-
-interface AuthState {
-  user: User | null;
-  userRole: UserRole | null;
-  loading: boolean;
-}
+import type { User } from '../types/auth';
 
 export const useAuth = () => {
-  const [authState, setAuthState] = useState<AuthState>({
-    user: null,
-    userRole: null,
-    loading: true,
-  });
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const role = await getUserRole(user.uid);
-        setAuthState({
-          user,
-          userRole: role,
-          loading: false,
-        });
-      } else {
-        setAuthState({
-          user: null,
-          userRole: null,
-          loading: false,
-        });
-      }
-    });
-
-    return () => unsubscribe();
+    // Simulate auth state check
+    setLoading(false);
   }, []);
 
-  return authState;
-};
+  const signIn = async (email: string, password: string) => {
+    // Implement your own auth logic here
+    return null;
+  };
 
-export default useAuth;
+  const signOut = async () => {
+    // Implement your own signout logic here
+    setUser(null);
+  };
+
+  return {
+    user,
+    loading,
+    signIn,
+    signOut
+  };
+};

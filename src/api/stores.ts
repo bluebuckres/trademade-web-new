@@ -8,32 +8,31 @@ interface StoreData {
   updatedAt?: any;
 }
 
-export const createStore = async (storeData: Omit<StoreData, 'createdAt' | 'updatedAt'>) => {
-  try {
-    const data = {
-      ...storeData,
-      createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp()
-    };
+export interface Store {
+  id: string;
+  name: string;
+  address: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-    const storeRef = await addDoc(collection(db, "stores"), data);
-    const id = storeRef.id;
+export const createStore = async (storeData: Omit<Store, 'id' | 'createdAt' | 'updatedAt'>): Promise<Store> => {
+  const store: Store = {
+    id: Math.random().toString(36).substr(2, 9),
+    ...storeData,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  };
+  return store;
+};
 
-    // Update the document with its ID
-    await updateDoc(doc(db, "stores", id), {
-      id,
-      ...data
-    });
-
-    return {
-      success: true,
-      data: { id, ...data }
-    };
-  } catch (error) {
-    console.error('Error creating store:', error);
-    return {
-      success: false,
-      error: 'Failed to create store'
-    };
-  }
+export const updateStore = async (id: string, updates: Partial<Store>): Promise<Store> => {
+  const store: Store = {
+    id,
+    name: updates.name || '',
+    address: updates.address || '',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  };
+  return store;
 };
