@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginFormProps {
   onSuccess: () => void;
@@ -12,7 +13,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess, onRegisterClick
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { signInWithEmail } = useAuth();
+  const { signInWithEmail } = useAuthContext();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

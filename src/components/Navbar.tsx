@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuthContext } from '../contexts/AuthContext';
 
 export const Navbar = () => {
-  const { user } = useAuth();
+  const { user } = useAuthContext();
   const navigate = useNavigate();
 
   const handleSignIn = () => {

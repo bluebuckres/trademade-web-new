@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../contexts/AuthContext';
 import { Button } from '../components/ui/button';
 
 export const VerifyEmail = () => {
-  const { isEmailLink, completeSignInWithLink } = useAuth();
+  const { isEmailLink, completeSignInWithLink } = useAuthContext();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();

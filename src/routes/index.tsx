@@ -8,7 +8,7 @@ import Overview from '../pages/dashboard/Overview';
 import DashboardLayout from '../layouts/DashboardLayout';
 import { ProtectedRoute } from '../components/auth/ProtectedRoute';
 import { Customize } from '../pages/Customize';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuthContext } from '../contexts/AuthContext';
 import { PrivacyPolicy } from '../components/PrivacyPolicy';
 import { Terms } from '../components/Terms';
 import { RefundPolicy } from '../components/RefundPolicy';
@@ -67,12 +67,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-const AppRoutes: React.FC = () => {
-  const { user } = useAuth();
+export const AppRoutes = () => {
+  const { user } = useAuthContext();
 
   return (
     <RouterProvider router={router} />
   );
 };
-
-export default AppRoutes;

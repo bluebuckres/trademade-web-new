@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../components/ui/button';
+import { RegisterForm } from '../components/auth/RegisterForm';
+import { useAuthContext } from '../contexts/AuthContext';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
 import { Turnstile } from '../components/Turnstile';
 
 export const Register = () => {
   const navigate = useNavigate();
-  const { signInWithGoogle } = useAuth();
+  const { signInWithGoogle } = useAuthContext();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

@@ -16,25 +16,44 @@ export interface Store {
   updatedAt: Date;
 }
 
-export const createStore = async (storeData: Omit<Store, 'id' | 'createdAt' | 'updatedAt'>): Promise<Store> => {
-  const store: Store = {
-    id: Math.random().toString(36).substr(2, 9),
+// Local store (in production, use a proper database)
+const stores = new Map();
+
+export const createStore = async (storeData: any) => {
+  const id = Math.random().toString(36).substr(2, 9);
+  const store = {
     ...storeData,
-    createdAt: new Date(),
-    updatedAt: new Date()
+    id,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
   };
-  // TODO: Implement store creation logic
+  stores.set(id, store);
   return store;
 };
 
-export const updateStore = async (id: string, updates: Partial<Store>): Promise<Store> => {
-  const store: Store = {
-    id,
-    name: updates.name || '',
-    address: updates.address || '',
-    createdAt: new Date(),
-    updatedAt: new Date()
+export const updateStore = async (storeId: string, updateData: any) => {
+  const store = stores.get(storeId);
+  if (!store) {
+    throw new Error('Store not found');
+  }
+
+  const updatedStore = {
+    ...store,
+    ...updateData,
+    updatedAt: new Date().toISOString()
   };
-  // TODO: Implement store update logic
+  stores.set(storeId, updatedStore);
+  return updatedStore;
+};
+
+export const getStore = async (storeId: string) => {
+  const store = stores.get(storeId);
+  if (!store) {
+    throw new Error('Store not found');
+  }
   return store;
+};
+
+export const getAllStores = async () => {
+  return Array.from(stores.values());
 };

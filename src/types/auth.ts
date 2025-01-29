@@ -39,9 +39,10 @@ export interface OTPVerificationData {
 }
 
 export interface User {
-  uid: string;
-  email: string | null;
-  displayName: string | null;
+  id: string;
+  email: string;
+  name: string;
+  photoURL?: string;
 }
 
 export interface AuthResponse {

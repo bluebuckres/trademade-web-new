@@ -1,10 +1,11 @@
-import * as React from 'react';
-import { useAuth } from '../contexts/AuthContext';
+import React from 'react';
+import { useAuthContext } from '../contexts/AuthContext';
 import { logoutUser } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
+import { Button } from './ui/button';
 
-const Dashboard = () => {
-  const { user } = useAuth();
+export const Dashboard = () => {
+  const { user } = useAuthContext();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -21,12 +22,12 @@ const Dashboard = () => {
               <h1 className="text-xl font-semibold">Dashboard</h1>
             </div>
             <div className="flex items-center">
-              <button
+              <Button
                 onClick={handleLogout}
                 className="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
               >
                 Logout
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -49,5 +50,3 @@ const Dashboard = () => {
     </div>
   );
 };
-
-export default Dashboard;
