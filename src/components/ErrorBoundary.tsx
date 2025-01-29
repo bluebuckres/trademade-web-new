@@ -1,48 +1,31 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React from 'react';
+import { useRouteError, Link } from 'react-router-dom';
+import { Button } from './ui/button';
 
-interface Props {
-  children: ReactNode;
-}
+export const ErrorBoundary = () => {
+  const error = useRouteError() as any;
 
-interface State {
-  hasError: boolean;
-  error: Error | null;
-}
-
-class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false,
-    error: null
-  };
-
-  public static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error };
-  }
-
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error:', error, errorInfo);
-  }
-
-  public render() {
-    if (this.state.hasError) {
-      return (
-        <div className="min-h-screen bg-[#0D0D0D] text-white flex flex-col items-center justify-center p-4">
-          <h1 className="text-2xl font-bold mb-4">Something went wrong</h1>
-          <pre className="bg-red-900/20 p-4 rounded-lg overflow-auto max-w-full">
-            {this.state.error?.toString()}
-          </pre>
-          <button
-            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            onClick={() => window.location.reload()}
-          >
-            Reload Page
-          </button>
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              {error?.status === 404 ? "Page Not Found" : "Oops! Something went wrong"}
+            </h1>
+            <p className="text-gray-600 mb-8">
+              {error?.status === 404 
+                ? "The page you're looking for doesn't exist."
+                : "We're sorry, but something went wrong. Please try again later."}
+            </p>
+            <Link to="/">
+              <Button>
+                Return to Home
+              </Button>
+            </Link>
+          </div>
         </div>
-      );
-    }
-
-    return this.props.children;
-  }
-}
-
-export default ErrorBoundary;
+      </div>
+    </div>
+  );
+};

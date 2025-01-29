@@ -1,76 +1,64 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider, Route, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Home } from '../pages/Home';
-import { Login } from '../pages/Login';
-import { Register } from '../pages/Register';
-import { VerifyEmail } from '../pages/VerifyEmail';
-import Overview from '../pages/dashboard/Overview';
-import DashboardLayout from '../layouts/DashboardLayout';
-import { ProtectedRoute } from '../components/auth/ProtectedRoute';
-import { Customize } from '../pages/Customize';
-import { useAuthContext } from '../contexts/AuthContext';
-import { PrivacyPolicy } from '../components/PrivacyPolicy';
+import { HowToUse } from '../components/HowToUse';
+import { Pricing } from '../components/Pricing';
+import { Contact } from '../components/Contact';
 import { Terms } from '../components/Terms';
+import { PrivacyPolicy } from '../components/PrivacyPolicy';
 import { RefundPolicy } from '../components/RefundPolicy';
 import { Security } from '../components/Security';
+import { ErrorBoundary } from '../components/ErrorBoundary';
+import { SignUp } from '../components/SignUp';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
+    errorElement: <ErrorBoundary />
   },
   {
-    path: '/login',
-    element: <Login />,
+    path: '/sign-up',
+    element: <SignUp />,
+    errorElement: <ErrorBoundary />
   },
   {
-    path: '/register',
-    element: <Register />,
+    path: '/how-to-use',
+    element: <HowToUse />,
+    errorElement: <ErrorBoundary />
   },
   {
-    path: '/verify-email',
-    element: <VerifyEmail />,
+    path: '/pricing',
+    element: <Pricing />,
+    errorElement: <ErrorBoundary />
   },
   {
-    path: '/privacy',
-    element: <PrivacyPolicy />,
+    path: '/contact',
+    element: <Contact />,
+    errorElement: <ErrorBoundary />
   },
   {
     path: '/terms',
     element: <Terms />,
+    errorElement: <ErrorBoundary />
   },
   {
-    path: '/refund-policy',
+    path: '/privacy',
+    element: <PrivacyPolicy />,
+    errorElement: <ErrorBoundary />
+  },
+  {
+    path: '/refund',
     element: <RefundPolicy />,
+    errorElement: <ErrorBoundary />
   },
   {
     path: '/security',
     element: <Security />,
-  },
-  {
-    path: '/dashboard',
-    element: (
-      <ProtectedRoute>
-        <DashboardLayout />
-      </ProtectedRoute>
-    ),
-    children: [
-      {
-        path: '',
-        element: <Overview />,
-      },
-      {
-        path: 'customize',
-        element: <Customize />,
-      },
-    ],
-  },
+    errorElement: <ErrorBoundary />
+  }
 ]);
 
 export const AppRoutes = () => {
-  const { user } = useAuthContext();
-
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 };
