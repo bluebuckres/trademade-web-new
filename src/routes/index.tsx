@@ -10,52 +10,51 @@ import { RefundPolicy } from '../components/RefundPolicy';
 import { Security } from '../components/Security';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import { SignUp } from '../components/SignUp';
+import { Layout } from '../components/Layout';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
-    errorElement: <ErrorBoundary />
-  },
-  {
-    path: '/sign-up',
-    element: <SignUp />,
-    errorElement: <ErrorBoundary />
-  },
-  {
-    path: '/how-to-use',
-    element: <HowToUse />,
-    errorElement: <ErrorBoundary />
-  },
-  {
-    path: '/pricing',
-    element: <Pricing />,
-    errorElement: <ErrorBoundary />
-  },
-  {
-    path: '/contact',
-    element: <Contact />,
-    errorElement: <ErrorBoundary />
-  },
-  {
-    path: '/terms',
-    element: <Terms />,
-    errorElement: <ErrorBoundary />
-  },
-  {
-    path: '/privacy',
-    element: <PrivacyPolicy />,
-    errorElement: <ErrorBoundary />
-  },
-  {
-    path: '/refund-policy',
-    element: <RefundPolicy />,
-    errorElement: <ErrorBoundary />
-  },
-  {
-    path: '/security',
-    element: <Security />,
-    errorElement: <ErrorBoundary />
+    element: <Layout />,
+    errorElement: <ErrorBoundary />,
+    children: [
+      {
+        path: '',
+        element: <Home />,
+      },
+      {
+        path: 'sign-up',
+        element: <SignUp />,
+      },
+      {
+        path: 'how-to-use',
+        element: <HowToUse />,
+      },
+      {
+        path: 'pricing',
+        element: <Pricing />,
+      },
+      {
+        path: 'contact',
+        element: <Contact />,
+      },
+      {
+        path: 'terms',
+        element: <Terms />,
+      },
+      {
+        path: 'privacy',
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: 'refund-policy',
+        element: <RefundPolicy />,
+      },
+      {
+        path: 'security',
+        element: <Security />,
+      }
+    ]
   }
 ]);
 

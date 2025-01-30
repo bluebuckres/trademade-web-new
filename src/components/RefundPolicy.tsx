@@ -1,12 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Navbar } from './Navbar';
-import { Footer } from './Footer';
 
 export const RefundPolicy = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
       <div className="flex-grow bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -85,7 +82,6 @@ export const RefundPolicy = () => {
           </motion.div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
