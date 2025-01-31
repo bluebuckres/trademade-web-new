@@ -61,7 +61,6 @@ export const Pricing = () => {
                   <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">for 7 days</span>
                 </p>
                 <Button
-                  onClick={() => navigate('/sign-up')}
                   className="mt-10 w-full bg-indigo-600 text-white hover:bg-indigo-700"
                 >
                   Start your trial
@@ -111,7 +110,6 @@ export const Pricing = () => {
                   </li>
                 </ul>
                 <Button
-                  onClick={() => navigate('/sign-up')}
                   className="mt-8 w-full bg-indigo-600 text-white hover:bg-indigo-700"
                 >
                   Get Started
@@ -158,7 +156,6 @@ export const Pricing = () => {
                   </li>
                 </ul>
                 <Button
-                  onClick={() => navigate('/sign-up')}
                   className="mt-8 w-full bg-indigo-600 text-white hover:bg-indigo-700"
                 >
                   Get Started
@@ -205,7 +202,6 @@ export const Pricing = () => {
                   </li>
                 </ul>
                 <Button
-                  onClick={() => navigate('/sign-up')}
                   className="mt-8 w-full bg-indigo-600 text-white hover:bg-indigo-700"
                 >
                   Get Started
