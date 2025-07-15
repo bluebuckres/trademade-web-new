@@ -11,6 +11,7 @@ import { Security } from '../components/Security';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import { SignUp } from '../components/SignUp';
 import { Layout } from '../components/Layout';
+import { About } from '../pages/About';
 
 const router = createBrowserRouter([
   {
@@ -53,7 +54,11 @@ const router = createBrowserRouter([
       {
         path: 'security',
         element: <Security />,
-      }
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
     ]
   }
 ]);
