@@ -62,8 +62,17 @@ export function ContactForm() {
                         </p>
 
                         <MagneticButton
-                            href="https://trademade.neetocal.com/6f2bfcb1-b1de-4959-a78e-993d3194d7a1"
-                            target="_blank"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                const windowObj = window as any;
+                                if (windowObj.neetoCal) {
+                                    windowObj.neetoCal.embed({
+                                        type: "popup",
+                                        id: "6f2bfcb1-b1de-4959-a78e-993d3194d7a1",
+                                        organization: "trademade"
+                                    });
+                                }
+                            }}
                             className="bg-primary text-[#000000] hover:bg-primary-hover w-full sm:w-auto px-8 font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(0,212,170,0.3)] flex items-center justify-center gap-2 text-lg"
                         >
                             <Calendar size={24} weight="bold" />
