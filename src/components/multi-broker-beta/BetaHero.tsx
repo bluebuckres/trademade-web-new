@@ -3,6 +3,7 @@
 import { AsymmetricContainer } from "@/components/ui/AsymmetricContainer";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import Image from "next/image";
+import { RocketLaunch, WhatsappLogo } from "@phosphor-icons/react";
 
 export function BetaHero() {
     return (
@@ -29,11 +30,13 @@ export function BetaHero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4">
-                        <MagneticButton href="#waitlist-form" className="bg-primary text-[#000000] hover:bg-primary-hover shadow-[0_0_20px_rgba(0,212,170,0.3)] w-full sm:w-auto px-8">
-                            🚀 Join the Beta Waitlist
+                        <MagneticButton href="#waitlist-form" className="bg-primary text-[#000000] hover:bg-primary-hover shadow-[0_0_20px_rgba(0,212,170,0.3)] w-full sm:w-auto px-8 flex items-center gap-2">
+                            <RocketLaunch weight="fill" size={20} />
+                            Join the Beta Waitlist
                         </MagneticButton>
-                        <MagneticButton href="https://wa.me/917908158639" className="bg-white/5 border border-white/10 hover:bg-white/10 text-white w-full sm:w-auto px-6">
-                            💬 Ask Us on WhatsApp
+                        <MagneticButton href="https://wa.me/917908158639" className="bg-white/5 border border-white/10 hover:bg-white/10 text-white w-full sm:w-auto px-6 flex items-center gap-2">
+                            <WhatsappLogo weight="fill" size={20} className="text-[#25D366]" />
+                            Ask Us on WhatsApp
                         </MagneticButton>
                     </div>
 

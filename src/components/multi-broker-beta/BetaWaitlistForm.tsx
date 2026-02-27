@@ -44,7 +44,7 @@ export function BetaWaitlistForm() {
     };
 
     return (
-        <section className="py-24 relative border-t border-white/5 bg-surface/30">
+        <section id="waitlist-form" className="py-24 relative border-t border-white/5 bg-surface/30">
             <div className="max-w-4xl mx-auto px-6">
                 <LiquidGlassCard className="p-8 md:p-12 border-primary/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_0_100px_-20px_rgba(0,212,170,0.15)] relative overflow-hidden">
 

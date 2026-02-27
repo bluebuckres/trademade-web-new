@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -155,17 +156,19 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* NeetoCal: initialize global object + load embed script on every page */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.neetoCal=window.neetoCal||{embed:function(){(window.neetoCal.q=window.neetoCal.q||[]).push(arguments)}};`,
-          }}
-        />
-        <script async src="https://cdn.neetocal.com/javascript/embed.js" />
+        {/* Move NeetoCal initialization to body to avoid hydration wipeout */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-slate-300 min-h-[100dvh] flex flex-col bg-background`}
       >
+        <Script
+          id="neetocal-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.neetoCal=window.neetoCal||{embed:function(){(window.neetoCal.q=window.neetoCal.q||[]).push(arguments)}};`,
+          }}
+        />
+        <Script src="https://cdn.neetocal.com/javascript/embed.js" strategy="afterInteractive" />
         <Navbar />
         <main className="flex-1 flex flex-col">
           {children}
