@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 export async function POST(req: NextRequest) {
     try {
@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
             );
         }
 
+        const supabase = getSupabase();
         const { error } = await supabase.from("blog_leads").insert({
             phone: "+91" + cleaned,
             source_page: source_page || null,

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 export async function POST(req: NextRequest) {
     try {
@@ -18,6 +18,7 @@ export async function POST(req: NextRequest) {
             : booking?.ends_at || null;
         const status = booking?.status || payload?.event || "created";
 
+        const supabase = getSupabase();
         const { error } = await supabase.from("cal_bookings").insert({
             booking_id,
             name,
