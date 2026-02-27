@@ -1,5 +1,6 @@
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { Metadata } from "next";
 
@@ -42,6 +43,7 @@ const blogPosts = [
     category: "Quant Research",
     readTime: "7 min read",
     featured: true,
+    image: "/1-min-data-banner.png",
   },
   {
     title: "Building a Python Execution Engine from Scratch",
@@ -71,6 +73,7 @@ const blogPosts = [
     category: "Educational",
     readTime: "8 min read",
     featured: true,
+    image: "/algo-trading-banner.png",
   },
 ];
 
@@ -124,22 +127,33 @@ export default function BlogIndexPage() {
 
                   {/* Featured Image Placeholder / Art */}
                   <div className="relative min-h-[300px] lg:min-h-full bg-gradient-to-br from-slate-800 to-background border-l border-white/5 overflow-hidden">
-                    <div
-                      className="absolute inset-0 opacity-20"
-                      style={{
-                        backgroundImage:
-                          "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
-                        backgroundSize: "24px 24px",
-                      }}
-                    />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-primary/20 blur-[100px] rounded-full" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="font-mono text-xs text-slate-500/50 uppercase tracking-widest text-center">
-                        Algo Logic Simulation
-                        <br />
-                        Visual Data Required
-                      </div>
-                    </div>
+                    {post.image ? (
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <>
+                        <div
+                          className="absolute inset-0 opacity-20"
+                          style={{
+                            backgroundImage:
+                              "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
+                            backgroundSize: "24px 24px",
+                          }}
+                        />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-primary/20 blur-[100px] rounded-full" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="font-mono text-xs text-slate-500/50 uppercase tracking-widest text-center">
+                            Algo Logic Simulation
+                            <br />
+                            Visual Data Required
+                          </div>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

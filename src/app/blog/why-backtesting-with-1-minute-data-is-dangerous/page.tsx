@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import LeadCaptureForm from "@/components/blog/LeadCaptureForm";
 
@@ -48,6 +49,17 @@ export default function BlogPost() {
                         </div>
                     </div>
                 </header>
+
+                {/* Hero Banner Image */}
+                <div className="mb-12 rounded-2xl overflow-hidden border border-white/10 relative aspect-[1200/630] shadow-2xl">
+                    <Image
+                        src="/1-min-data-banner.png"
+                        alt="Why Backtesting with 1-Minute Data is Dangerous"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                </div>
 
                 {/* Article Content */}
                 <div className="prose prose-invert prose-slate prose-lg max-w-none prose-headings:font-satoshi prose-headings:font-bold prose-headings:text-white prose-p:text-slate-300 prose-a:text-primary prose-strong:text-white prose-li:text-slate-300">
