@@ -1,0 +1,21 @@
+{
+    "name": "TradeMade",
+    "short_name": "TradeMade",
+    "description": "India's most precise backtesting engine meets professional custom algorithm development.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#07090d",
+    "theme_color": "#00d4aa",
+    "icons": [
+        {
+            "src": "/custom_logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

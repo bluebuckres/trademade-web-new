@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeMade - Automated Trading Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=VT323&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #e0e5ec;
+            --plastic-light: #ffffff;
+            --plastic-dark: #a3b1c6;
+            --accent-green: #008f39;
+            --accent-red: #cf0000;
+            --screen-bg: #dbe2e0;
+            --text-main: #2d3748;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.65376 12.3673H5.46026L5.31717 12.4976L0.500002 16.8829L0.500002 1.19827L11.4841 5.58369L6.92913 8.37366L9.5768 12.7161L8.30095 13.4976L5.65376 12.3673Z" fill="black" stroke="white"/></svg>'), auto;
+        }
+
+        /* WebGL Canvas Layer */
+        #webgl-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Retro CRT Scanlines Overlay */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0) 50%,
+                    rgba(0, 0, 0, 0.05) 50%,
+                    rgba(0, 0, 0, 0.05));
+            background-size: 100% 4px;
+            z-index: 999;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+
+        /* Skeuomorphic Card Base */
+        .skeuo-card {
+            background: var(--bg-color);
+            border-radius: 16px;
+            box-shadow:
+                9px 9px 16px var(--plastic-dark),
+                -9px -9px 16px var(--plastic-light),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Inset Screen Look (for code/charts) */
+        .skeuo-inset {
+            background: var(--screen-bg);
+            box-shadow:
+                inset 6px 6px 12px #bec3c9,
+                inset -6px -6px 12px #ffffff;
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'VT323', monospace;
+            color: #333;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        /* Glass / Lens Effect */
+        .glass-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.02) 100%);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        /* Buttons */
+        .skeuo-btn {
+            background: linear-gradient(145deg, #f0f4f9, #cacfd6);
+            box-shadow:
+                5px 5px 10px #bec3c9,
+                -5px -5px 10px #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-weight: 700;
+            transition: transform 0.1s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skeuo-btn:active {
+            box-shadow: inset 4px 4px 8px #bec3c9, inset -4px -4px 8px #ffffff;
+            transform: scale(0.98);
+        }
+
+        .skeuo-btn.primary {
+            color: var(--accent-green);
+        }
+
+        /* Draggable Physics Class */
+        .draggable-card {
+            cursor: grab;
+            touch-action: none;
+            user-select: none;
+        }
+
+        .draggable-card:active {
+            cursor: grabbing;
+        }
+
+        /* Blinking Cursor for Terminal */
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Marquee Animation */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* CRT Flicker */
+        .crt-flicker {
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% {
+                opacity: 0.98;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.99;
+            }
+        }
+
+        /* Grid Pattern for Charts */
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* LED Light */
+        .led {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #444;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .led.on {
+            background: #00ff41;
+            box-shadow: 0 0 10px #00ff41, inset -2px -2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- WebGL Background -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- CRT Scanlines -->
+    <div class="scanlines"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-5xl">
+        <div class="skeuo-card px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-8 h-8 rounded bg-gray-700 flex items-center justify-center text-green-400 font-mono font-bold text-xl border-2 border-gray-600 shadow-inner">
+                    T</div>
+                <span class="font-bold text-xl tracking-tighter text-gray-700">TradeMade<span
+                        class="text-xs align-top opacity-50">TM</span></span>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-bold text-gray-600">
+                <a href="#" class="hover:text-black transition-colors">SOLUTIONS</a>
+                <a href="#" class="hover:text-black transition-colors">BENEFITS</a>
+                <a href="#" class="hover:text-black transition-colors">PRICING</a>
+            </div>
+            <button class="skeuo-btn px-6 py-2 text-xs">Login</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen pt-32 pb-20 px-4 flex flex-col items-center justify-center relative">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+            <!-- Left: Text Content -->
+            <div class="lg:col-span-5 space-y-8 z-10">
+                <div class="skeuo-card p-6 inline-block rotate-[-2deg]">
+                    <span class="font-mono text-xs text-green-700 uppercase tracking-widest flex items-center gap-2">
+                        <span class="led on animate-pulse"></span> System Online
+                    </span>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold leading-[0.9] text-gray-800"
+                    style="text-shadow: 2px 2px 0px rgba(255,255,255,0.5), -1px -1px 0px rgba(0,0,0,0.1);">
+                    YOUR PARTNER IN <br>
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-gray-500">AUTOMATED</span>
+                    <br>
+                    EXCELLENCE
+                </h1>
+
+                <div class="skeuo-inset max-w-md text-lg leading-relaxed shadow-inner bg-gray-100">
+                    <p class="typewriter-text">Simplify your trading journey. Automate strategies, minimize risks, and
+                        maximize profits.</p>
+                </div>
+
+                <div class="flex gap-4">
+                    <button class="skeuo-btn primary px-8 py-4 text-lg">Get Started Free</button>
+                    <button class="skeuo-btn px-8 py-4 text-lg">Book Demo</button>
+                </div>
+            </div>
+
+            <!-- Right: The Interactive Terminal -->
+            <div class="lg:col-span-7 relative z-10 perspective-1000">
+                <!-- Draggable Main Terminal -->
+                <div id="hero-terminal" class="draggable-card skeuo-card p-4 bg-[#d0d6e0] border-4 border-[#b8c0ca]">
+                    <!-- Terminal Header -->
+                    <div class="flex justify-between items-center mb-4 border-b border-gray-400 pb-2">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-400 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.2)]">
+                            </div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-400 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.2)]">
+                            </div>
+                            <div class="w-3 h-3 rounded-full bg-green-400 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.2)]">
+                            </div>
+                        </div>
+                        <div class="font-mono text-xs text-gray-500 uppercase">algos.exe - Running</div>
+                    </div>
+
+                    <!-- Inner Screen -->
+                    <div class="skeuo-inset h-[400px] grid grid-cols-2 grid-rows-2 gap-4 bg-[#e8ebe9] relative">
+                        <div class="glass-overlay z-20"></div>
+
+                        <!-- Chart Widget -->
+                        <div
+                            class="col-span-2 row-span-1 border border-gray-300 rounded p-2 bg-white grid-bg relative overflow-hidden">
+                            <div class="absolute top-2 left-2 text-[10px] font-mono text-gray-400">NIFTY 50 [LIVE]</div>
+                            <canvas id="chart-canvas" class="w-full h-full"></canvas>
+                        </div>
+
+                        <!-- Data Stream -->
+                        <div
+                            class="col-span-1 border border-gray-300 rounded p-2 bg-black text-green-500 font-mono text-xs overflow-hidden leading-tight crt-flicker">
+                            <div id="code-stream">Initializing...<br>Connection: SEBI_GW_01<br>Latency: 4ms<br>Strategy:
+                                STRANGLE_LZ<br>Checking Margins... OK<br>Executing Order #8829...</div>
+                        </div>
+
+                        <!-- Metrics -->
+                        <div
+                            class="col-span-1 border border-gray-300 rounded p-2 bg-white flex flex-col justify-center items-center shadow-inner">
+                            <div class="text-[10px] uppercase text-gray-400 tracking-widest mb-1">Total P&L</div>
+                            <div class="text-3xl font-bold font-mono text-green-600">+₹42,050</div>
+                            <div class="w-full h-2 bg-gray-200 rounded-full mt-2 overflow-hidden shadow-inner">
+                                <div class="h-full bg-green-500 w-[75%] animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Physical Knobs/Controls Simulation -->
+                    <div class="mt-4 flex justify-between items-center px-4">
+                        <div class="flex gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full skeuo-btn flex items-center justify-center rotate-45 border-2 border-gray-300">
+                                <div class="w-1 h-4 bg-gray-400 rounded-full"></div>
+                            </div>
+                            <div class="text-[10px] font-mono text-gray-500 self-center">GAIN<br>CONTROL</div>
+                        </div>
+                        <div class="text-xs font-mono text-gray-400">V.2.0.4</div>
+                    </div>
+                </div>
+
+                <!-- Floating Decoration Cards -->
+                <div class="draggable-card skeuo-card absolute -bottom-10 -left-10 p-4 w-48 z-20" data-spring="0.1">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold border border-blue-200">
+                            SEBI</div>
+                        <div class="text-xs font-bold text-gray-600">Compliant & Secure</div>
+                    </div>
+                </div>
+
+                <div class="draggable-card skeuo-card absolute -top-5 -right-5 p-4 w-40 z-0 bg-gray-200"
+                    data-spring="0.05">
+                    <div class="text-xs font-mono text-gray-500 text-center">API BRIDGE<br>CONNECTED</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scrolling Ticker -->
+    <div class="border-y border-gray-300 bg-[#dbe2e0] py-3 shadow-inner">
+        <div class="marquee-container">
+            <div class="marquee-content font-mono text-lg font-bold text-gray-600">
+                NIFTY +1.2% &nbsp;///&nbsp; BANKNIFTY -0.4% &nbsp;///&nbsp; ALGO_STATUS: ACTIVE &nbsp;///&nbsp; 15+
+                BROKERS INTEGRATED &nbsp;///&nbsp; ZERODHA &nbsp;///&nbsp; FYERS &nbsp;///&nbsp; UPSTOX &nbsp;///&nbsp;
+                ANGEL ONE &nbsp;///&nbsp; FINVASIA &nbsp;///&nbsp;
+                NIFTY +1.2% &nbsp;///&nbsp; BANKNIFTY -0.4% &nbsp;///&nbsp; ALGO_STATUS: ACTIVE &nbsp;///&nbsp; 15+
+                BROKERS INTEGRATED &nbsp;///&nbsp; ZERODHA &nbsp;///&nbsp; FYERS &nbsp;///&nbsp; UPSTOX &nbsp;///&nbsp;
+                ANGEL ONE &nbsp;///&nbsp; FINVASIA &nbsp;///&nbsp;
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits Section (Draggable Grid) -->
+    <section class="py-24 px-4 bg-[#e0e5ec]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-700">HARDWARE-GRADE RELIABILITY</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="draggable-card skeuo-card p-6 flex flex-col items-center text-center hover:z-10 group">
+                    <div
+                        class="w-16 h-16 mb-4 rounded-xl skeuo-inset flex items-center justify-center text-2xl group-hover:text-blue-500 transition-colors">
+                        ⚙️
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Automation</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">One-click strangles, straddles, and multi-account
+                        replication without manual errors.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="draggable-card skeuo-card p-6 flex flex-col items-center text-center hover:z-10 group">
+                    <div
+                        class="w-16 h-16 mb-4 rounded-xl skeuo-inset flex items-center justify-center text-2xl group-hover:text-red-500 transition-colors">
+                        🛡️
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Risk Guard</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Lightning-fast stoploss execution. Proven stability
+                        during Nifty crashes.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="draggable-card skeuo-card p-6 flex flex-col items-center text-center hover:z-10 group">
+                    <div
+                        class="w-16 h-16 mb-4 rounded-xl skeuo-inset flex items-center justify-center text-2xl group-hover:text-green-500 transition-colors">
+                        🔒
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Black Box</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Proprietary logic protection. Your strategy remains
+                        yours, securely encrypted.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="draggable-card skeuo-card p-6 flex flex-col items-center text-center hover:z-10 group">
+                    <div
+                        class="w-16 h-16 mb-4 rounded-xl skeuo-inset flex items-center justify-center text-2xl group-hover:text-purple-500 transition-colors">
+                        ⚡
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">24/7 Uptime</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Cloud-based precision execution. Never miss a trade
+                        due to internet lags.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services (List Style) -->
+    <section class="py-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10"
+            style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="skeuo-card p-8 md:p-12 bg-[#e6e9ef]">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b-2 border-gray-300 pb-4">
+                    <h2 class="text-3xl font-bold text-gray-800">SERVICES_MANIFEST</h2>
+                    <span class="font-mono text-gray-500">IND-2023</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div
+                        class="group flex items-center justify-between p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all cursor-pointer border border-transparent hover:border-gray-200">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-700">Custom Algo Development</h4>
+                            <p class="text-sm text-gray-500">Python/NodeJS based tailored algorithms.</p>
+                        </div>
+                        <div
+                            class="w-8 h-8 rounded-full bg-gray-200 group-hover:bg-green-400 transition-colors flex items-center justify-center">
+                            →</div>
+                    </div>
+
+                    <div
+                        class="group flex items-center justify-between p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all cursor-pointer border border-transparent hover:border-gray-200">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-700">Copy Trading Infrastructure</h4>
+                            <p class="text-sm text-gray-500">Master-Child account replication in real-time.</p>
+                        </div>
+                        <div
+                            class="w-8 h-8 rounded-full bg-gray-200 group-hover:bg-green-400 transition-colors flex items-center justify-center">
+                            →</div>
+                    </div>
+
+                    <div
+                        class="group flex items-center justify-between p-4 rounded-lg hover:bg-white hover:shadow-lg transition-all cursor-pointer border border-transparent hover:border-gray-200">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-700">White Label Solutions</h4>
+                            <p class="text-sm text-gray-500">Launch your own branded trading platform.</p>
+                        </div>
+                        <div
+                            class="w-8 h-8 rounded-full bg-gray-200 group-hover:bg-green-400 transition-colors flex items-center justify-center">
+                            →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Chat Bubble Style) -->
+    <section class="py-20 px-4">
+        <h2 class="text-center text-3xl font-bold mb-12 text-gray-700">USER LOGS</h2>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <div class="skeuo-card p-6 bg-[#f4f7fa]">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-gray-300 shadow-inner overflow-hidden border-2 border-white">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh" alt="Avatar">
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm">Rajesh K.</div>
+                        <div class="text-[10px] text-gray-500 font-mono">RETAIL TRADER</div>
+                    </div>
+                </div>
+                <div class="skeuo-inset bg-white italic text-sm text-gray-600">
+                    "TradeMade turned my manual trades into a hands-off powerhouse. No more emotional decisions!"
+                </div>
+            </div>
+
+            <div class="skeuo-card p-6 bg-[#f4f7fa] transform md:-translate-y-4">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-gray-300 shadow-inner overflow-hidden border-2 border-white">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Priya" alt="Avatar">
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm">Priya S.</div>
+                        <div class="text-[10px] text-gray-500 font-mono">STRATEGY CREATOR</div>
+                    </div>
+                </div>
+                <div class="skeuo-inset bg-white italic text-sm text-gray-600">
+                    "Reliable during Nifty crashes, and support is lightning-fast. The black-box feature is a
+                    lifesaver."
+                </div>
+            </div>
+
+            <div class="skeuo-card p-6 bg-[#f4f7fa]">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-gray-300 shadow-inner overflow-hidden border-2 border-white">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Amit" alt="Avatar">
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm">Amit P.</div>
+                        <div class="text-[10px] text-gray-500 font-mono">INVESTOR</div>
+                    </div>
+                </div>
+                <div class="skeuo-inset bg-white italic text-sm text-gray-600">
+                    "Easy for beginners like me. The broker integration was seamless and instant."
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#d1d9e6] py-12 px-4 border-t border-white shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <h3 class="font-bold text-xl text-gray-700">TradeMade</h3>
+                <p class="text-sm text-gray-500 mt-2">© 2023 All rights reserved.</p>
+                <p class="text-sm text-gray-500">support@trademade.in</p>
+            </div>
+
+            <div class="flex gap-4">
+                <a href="#" class="skeuo-btn w-10 h-10 flex items-center justify-center rounded-full">X</a>
+                <a href="#" class="skeuo-btn w-10 h-10 flex items-center justify-center rounded-full">in</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WebGL & Interactive Scripts -->
+    <script>
+        /* --- 1. WebGL Grain Shader --- */
+        const canvas = document.getElementById('webgl-canvas');
+        const gl = canvas.getContext('webgl');
+
+        if (gl) {
+            const vertexShaderSource = `
+                attribute vec2 position;
+                void main() {
+                    gl_Position = vec4(position, 0.0, 1.0);
+                }
+            `;
+
+            // Noise shader adapted for a light paper texture feel
+            const fragmentShaderSource = `
+                precision mediump float;
+                uniform vec2 resolution;
+                uniform float time;
+
+                float random(vec2 st) {
+                    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
+                }
+
+                void main() {
+                    vec2 st = gl_FragCoord.xy / resolution.xy;
+                    float rnd = random(st + time * 0.1);
+                    
+                    // Subtle grain for plastic/paper texture
+                    float grain = (rnd - 0.5) * 0.1; 
+                    
+                    // Light beige/blue tint
+                    vec3 color = vec3(0.87, 0.90, 0.93) + grain;
+                    
+                    gl_FragColor = vec4(color, 1.0);
+                }
+            `;
+
+            const createShader = (gl, type, source) => {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                return shader;
+            };
+
+            const program = gl.createProgram();
+            gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vertexShaderSource));
+            gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource));
+            gl.linkProgram(program);
+            gl.useProgram(program);
+
+            const positionLocation = gl.getAttribLocation(program, "position");
+            const buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+                -1, -1, 1, -1, -1, 1,
+                -1, 1, 1, -1, 1, 1,
+            ]), gl.STATIC_DRAW);
+            gl.enableVertexAttribArray(positionLocation);
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+            const resolutionLocation = gl.getUniformLocation(program, "resolution");
+            const timeLocation = gl.getUniformLocation(program, "time");
+
+            const resize = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+                gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+            };
+            window.addEventListener('resize', resize);
+            resize();
+
+            const render = (time) => {
+                gl.uniform1f(timeLocation, time * 0.001);
+                gl.drawArrays(gl.TRIANGLES, 0, 6);
+                requestAnimationFrame(render);
+            };
+            requestAnimationFrame(render);
+        }
+
+        /* --- 2. Chart Animation (Oscilloscope Style) --- */
+        const chartCanvas = document.getElementById('chart-canvas');
+        const ctx = chartCanvas.getContext('2d');
+
+        // Resize chart internal res
+        const resizeChart = () => {
+            chartCanvas.width = chartCanvas.offsetWidth;
+            chartCanvas.height = chartCanvas.offsetHeight;
+        };
+        window.addEventListener('resize', resizeChart);
+        resizeChart();
+
+        const points = [];
+        const maxPoints = 50;
+        let chartOffset = 0;
+
+        function animateChart() {
+            ctx.clearRect(0, 0, chartCanvas.width, chartCanvas.height);
+
+            // Draw Grid Lines (Green CRT style but dark on light bg)
+            ctx.strokeStyle = "rgba(0,0,0,0.05)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            for (let x = 0; x < chartCanvas.width; x += 20) { ctx.moveTo(x, 0); ctx.lineTo(x, chartCanvas.height); }
+            for (let y = 0; y < chartCanvas.height; y += 20) { ctx.moveTo(0, y); ctx.lineTo(chartCanvas.width, y); }
+            ctx.stroke();
+
+            // Generate Data
+            if (points.length < maxPoints) {
+                points.push(Math.random());
+            } else {
+                points.shift();
+                points.push(Math.random());
+            }
+
+            // Smooth Line
+            ctx.beginPath();
+            ctx.strokeStyle = "#008f39"; // Dark Green
+            ctx.lineWidth = 2;
+
+            let sliceWidth = chartCanvas.width * 1.0 / (maxPoints - 1);
+            let x = 0;
+
+            for (let i = 0; i < points.length; i++) {
+                // Add some sine wave randomness + noise
+                const y = (chartCanvas.height / 2) + Math.sin(i * 0.5 + chartOffset) * 20 + (points[i] * 30 - 15);
+
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+
+                x += sliceWidth;
+            }
+            ctx.stroke();
+
+            // Draw "Head" Dot
+            ctx.fillStyle = "#00ff41"; // Bright Green
+            ctx.beginPath();
+            // Calculate last point pos
+            const lastY = (chartCanvas.height / 2) + Math.sin((points.length - 1) * 0.5 + chartOffset) * 20 + (points[points.length - 1] * 30 - 15);
+            ctx.arc(x - sliceWidth, lastY, 4, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Glow under the line
+            ctx.lineTo(x, chartCanvas.height);
+            ctx.lineTo(0, chartCanvas.height);
+            ctx.fillStyle = "rgba(0, 143, 57, 0.1)";
+            ctx.fill();
+
+            chartOffset += 0.1;
+            requestAnimationFrame(animateChart);
+        }
+        animateChart();
+
+        /* --- 3. Spring Physics Drag System --- */
+        const draggables = document.querySelectorAll('.draggable-card');
+
+        draggables.forEach(card => {
+            let isDragging = false;
+            let startX, startY;
+            let currentX = 0, currentY = 0; // Current translation
+            let targetX = 0, targetY = 0;   // Where mouse is dragging to
+            let velocityX = 0, velocityY = 0; // Physics velocity
+            let rAF;
+
+            // Spring constants
+            const tension = 0.1;  // Stiffness
+            const friction = 0.8; // Damping
+
+            function updatePhysics() {
+                if (!isDragging) {
+                    // Spring back to 0,0
+                    const ax = (0 - currentX) * tension;
+                    const ay = (0 - currentY) * tension;
+
+                    velocityX += ax;
+                    velocityY += ay;
+                    velocityX *= friction;
+                    velocityY *= friction;
+
+                    currentX += velocityX;
+                    currentY += velocityY;
+
+                    // Stop if close enough
+                    if (Math.abs(currentX) < 0.1 && Math.abs(currentY) < 0.1 && Math.abs(velocityX) < 0.1) {
+                        currentX = 0;
+                        currentY = 0;
+                        card.style.transform = `translate(0px, 0px) scale(1)`;
+                        cancelAnimationFrame(rAF);
+                        return;
+                    }
+                } else {
+                    // Follow mouse/touch with slight lag (lerp)
+                    currentX = currentX + (targetX - currentX) * 0.5;
+                    currentY = currentY + (targetY - currentY) * 0.5;
+                }
+
+                const scale = isDragging ? 1.05 : 1.0;
+                // Add shadow depth based on lift
+                const shadowDepth = isDragging ? '20px 20px 30px rgba(163, 177, 198, 0.6)' : '';
+
+                card.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
+                if (isDragging) card.style.boxShadow = shadowDepth;
+                else card.style.boxShadow = ''; // revert to css
+
+                rAF = requestAnimationFrame(updatePhysics);
+            }
+
+            const onDown = (e) => {
+                isDragging = true;
+                startX = (e.clientX || e.touches[0].clientX);
+                startY = (e.clientY || e.touches[0].clientY);
+                // Reset targets relative to current drag start
+                targetX = currentX;
+                targetY = currentY;
+
+                // Lift effect
+                card.style.zIndex = 100;
+                updatePhysics();
+            };
+
+            const onMove = (e) => {
+                if (!isDragging) return;
+                const cx = (e.clientX || e.touches[0].clientX);
+                const cy = (e.clientY || e.touches[0].clientY);
+
+                // Calculate delta
+                targetX = cx - startX;
+                targetY = cy - startY;
+            };
+
+            const onUp = () => {
+                isDragging = false;
+                card.style.zIndex = '';
+                // updatePhysics continues running to spring back
+            };
+
+            card.addEventListener('mousedown', onDown);
+            window.addEventListener('mousemove', onMove);
+            window.addEventListener('mouseup', onUp);
+
+            card.addEventListener('touchstart', onDown);
+            window.addEventListener('touchmove', onMove);
+            window.addEventListener('touchend', onUp);
+        });
+
+        /* --- 4. Fake Terminal Typing --- */
+        const codeStream = document.getElementById('code-stream');
+        const logs = [
+            "Fetching NSE Data...",
+            "Analying Volatility Index...",
+            "MA(50) Crossover Detected",
+            "Placing Limit Order: 19500 CE",
+            "Order Filled @ 145.50",
+            "Updating SL to Cost...",
+            "Delta Neutralizing...",
+            "Heartbeat: Stable"
+        ];
+
+        setInterval(() => {
+            const log = logs[Math.floor(Math.random() * logs.length)];
+            const time = new Date().toLocaleTimeString('en-US', { hour12: false });
+            codeStream.innerHTML += `> [${time}] ${log}<br>`;
+            codeStream.scrollTop = codeStream.scrollHeight;
+
+            if (codeStream.innerHTML.length > 500) {
+                codeStream.innerHTML = "Cleaning Logs...<br>";
+            }
+        }, 1500);
+
+    </script>
+</body>
+
+</html>
