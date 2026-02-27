@@ -155,6 +155,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* NeetoCal: initialize global object + load embed script on every page */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.neetoCal=window.neetoCal||{embed:function(){(window.neetoCal.q=window.neetoCal.q||[]).push(arguments)}};`,
+          }}
+        />
+        <script async src="https://cdn.neetocal.com/javascript/embed.js" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-slate-300 min-h-[100dvh] flex flex-col bg-background`}

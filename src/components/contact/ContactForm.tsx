@@ -1,26 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
 import { LiquidGlassCard } from "@/components/ui/LiquidGlassCard";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { WhatsappLogo, Calendar } from "@phosphor-icons/react";
 
 export function ContactForm() {
-    useEffect(() => {
-        // Initialize NeetoCal so the popup can load on demand
-        const windowObj = window as any;
-        windowObj.neetoCal = windowObj.neetoCal || { embed: function (...args: any[]) { (windowObj.neetoCal.q = windowObj.neetoCal.q || []).push(args) } };
-
-        // Load the script only once
-        if (!document.getElementById("neetocal-script")) {
-            const script = document.createElement("script");
-            script.id = "neetocal-script";
-            script.src = "https://cdn.neetocal.com/javascript/embed.js";
-            script.async = true;
-            document.body.appendChild(script);
-        }
-    }, []);
-
     const openBookingModal = () => {
         const windowObj = window as any;
         if (windowObj.neetoCal) {
