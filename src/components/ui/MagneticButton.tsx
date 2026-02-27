@@ -7,8 +7,10 @@ import { cn } from "@/lib/utils";
 
 interface MagneticButtonProps extends Omit<HTMLMotionProps<"button">, "ref" | "onClick"> {
     children: React.ReactNode;
-    activeOnClick?: boolean;
+    className?: string;
     href?: string;
+    target?: string;
+    activeOnClick?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 

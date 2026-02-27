@@ -165,7 +165,21 @@ export default function RootLayout({
           id="neetocal-init"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `window.neetoCal=window.neetoCal||{embed:function(){(window.neetoCal.q=window.neetoCal.q||[]).push(arguments)}};`,
+            __html: `window.neetoCal=window.neetoCal||{embed:function(){(window.neetoCal.q=window.neetoCal.q||[]).push(arguments)}};
+             window.neetoCal.embed({
+                type: "floatingPopup",
+                id: "6f2bfcb1-b1de-4959-a78e-993d3194d7a1",
+                organization: "trademade",
+                styles: {
+                    btnTextColor: "#fff",
+                    btnPosition: "bottomRight",
+                    btnColor: "#008068",
+                    btnText: "Schedule a Quick Call",
+                    showIcon: true,
+                },
+                isSidebarAndCoverImgHidden: "false",
+                shouldForwardQueryParams: "false"
+             });`,
           }}
         />
         <Script src="https://cdn.neetocal.com/javascript/embed.js" strategy="afterInteractive" />

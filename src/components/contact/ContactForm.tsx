@@ -5,17 +5,6 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { WhatsappLogo, Calendar } from "@phosphor-icons/react";
 
 export function ContactForm() {
-    const openBookingModal = () => {
-        const windowObj = window as any;
-        if (windowObj.neetoCal) {
-            windowObj.neetoCal.embed({
-                type: "floatingPopup",
-                id: "6f2bfcb1-b1de-4959-a78e-993d3194d7a1",
-                organization: "trademade"
-            });
-        }
-    };
-
     return (
         <section id="contact-form" className="py-24 relative overflow-hidden bg-surface/20 border-t border-white/5 mt-12">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -72,13 +61,14 @@ export function ContactForm() {
                             Choose a convenient time on our calendar to discuss your algorithmic trading needs.
                         </p>
 
-                        <button
-                            onClick={openBookingModal}
-                            className="w-full bg-primary hover:bg-primary-hover text-[#000000] font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(0,212,170,0.3)] flex items-center justify-center gap-2 text-lg"
+                        <MagneticButton
+                            href="https://trademade.neetocal.com/6f2bfcb1-b1de-4959-a78e-993d3194d7a1"
+                            target="_blank"
+                            className="bg-primary text-[#000000] hover:bg-primary-hover w-full sm:w-auto px-8 font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(0,212,170,0.3)] flex items-center justify-center gap-2 text-lg"
                         >
                             <Calendar size={24} weight="bold" />
                             Book a Quick Call
-                        </button>
+                        </MagneticButton>
                     </LiquidGlassCard>
                 </div>
 
