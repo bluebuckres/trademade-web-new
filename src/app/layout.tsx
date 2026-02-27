@@ -167,16 +167,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `window.neetoCal=window.neetoCal||{embed:function(){(window.neetoCal.q=window.neetoCal.q||[]).push(arguments)}};
              window.neetoCal.embed({
-                type: "floatingPopup",
+                type: "elementClick",
                 id: "6f2bfcb1-b1de-4959-a78e-993d3194d7a1",
                 organization: "trademade",
-                styles: {
-                    btnTextColor: "#fff",
-                    btnPosition: "bottomRight",
-                    btnColor: "#008068",
-                    btnText: "Schedule a Quick Call",
-                    showIcon: true,
-                },
+                elementSelector: "#open-popup-button",
                 isSidebarAndCoverImgHidden: "false",
                 shouldForwardQueryParams: "false"
              });`,

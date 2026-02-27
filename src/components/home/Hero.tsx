@@ -34,17 +34,10 @@ export function Hero() {
                     </p>
 
                     <div className="flex flex-wrap items-center gap-4">
-                        <MagneticButton onClick={(e) => {
-                            e.preventDefault();
-                            const windowObj = window as any;
-                            if (windowObj.neetoCal) {
-                                windowObj.neetoCal.embed({
-                                    type: "popup",
-                                    id: "6f2bfcb1-b1de-4959-a78e-993d3194d7a1",
-                                    organization: "trademade"
-                                });
-                            }
-                        }} className="bg-primary hover:bg-primary-hover text-[#000000] shadow-[0_0_20px_rgba(0,212,170,0.3)] border-none cursor-pointer">
+                        <MagneticButton
+                            id="open-popup-button"
+                            className="bg-primary hover:bg-primary-hover text-[#000000] shadow-[0_0_20px_rgba(0,212,170,0.3)] border-none cursor-pointer"
+                        >
                             ▶ Book a Quick Call
                         </MagneticButton>
                         <MagneticButton href="https://wa.me/917908158639" className="bg-transparent border border-white/10 hover:bg-white/5 text-white flex gap-2 items-center px-6">
