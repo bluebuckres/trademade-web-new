@@ -14,6 +14,11 @@ export const metadata: Metadata = {
         description: "Deploy your algo across Zerodha, Angel One, Upstox and more simultaneously.",
         url: "https://trademade.in/multi-broker-beta",
     },
+    twitter: {
+        card: "summary_large_image",
+        title: "One Strategy. Multiple Brokers. AI-Powered. | TradeMade Beta",
+        description: "Deploy your algo across Zerodha, Angel One, Upstox and more simultaneously.",
+    },
     alternates: { canonical: "https://trademade.in/multi-broker-beta" },
 };
 

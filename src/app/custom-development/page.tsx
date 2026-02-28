@@ -14,6 +14,11 @@ export const metadata: Metadata = {
         description: "From a rough idea to a live algorithm on your broker in as little as 5 days.",
         url: "https://trademade.in/custom-development",
     },
+    twitter: {
+        card: "summary_large_image",
+        title: "Your Strategy, Coded and Deployed by Experts | TradeMade",
+        description: "From a rough idea to a live algorithm on your broker in as little as 5 days.",
+    },
     alternates: { canonical: "https://trademade.in/custom-development" },
 };
 

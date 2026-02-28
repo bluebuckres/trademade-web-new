@@ -12,6 +12,11 @@ export const metadata: Metadata = {
         description: "From high-precision backtesting to custom algorithm development and AI multi-broker alignment.",
         url: "https://trademade.in/services",
     },
+    twitter: {
+        card: "summary_large_image",
+        title: "Everything You Need to Trade Algorithmically | TradeMade",
+        description: "From high-precision backtesting to custom algorithm development and AI multi-broker alignment.",
+    },
     alternates: { canonical: "https://trademade.in/services" },
 };
 

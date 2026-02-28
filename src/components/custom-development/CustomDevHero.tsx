@@ -52,10 +52,7 @@ export function CustomDevHero() {
                     {/* Code Side (Bottom Right) */}
                     <div className="absolute top-[30%] left-[20%] right-0 bottom-0 bg-[#0d1117] rounded-tl-2xl border-t border-l border-white/10 shadow-[-20px_-20px_50px_rgba(0,0,0,0.5)] p-4 md:p-6 overflow-hidden transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
                         <div className="w-full h-8 flex items-center gap-2 border-b border-white/10 mb-4 pb-2">
-                            <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                            <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                            <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                            <span className="text-xs font-mono text-slate-500 ml-4">master_strategy.py</span>
+                            <span className="text-xs font-mono text-slate-500">master_strategy.py</span>
                             <div className="ml-auto px-2 py-0.5 rounded text-[10px] bg-green-500/20 text-green-400 font-bold uppercase tracking-wider">
                                 Oauth Active
                             </div>

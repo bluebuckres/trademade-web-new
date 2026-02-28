@@ -13,6 +13,11 @@ export const metadata: Metadata = {
         description: "Test your strategy on 10+ years of tick data — with slippage, brokerage, and real-world costs built in.",
         url: "https://trademade.in/backtesting",
     },
+    twitter: {
+        card: "summary_large_image",
+        title: "India's Most Realistic Backtesting Engine | TradeMade",
+        description: "Test your strategy on 10+ years of tick data — with slippage, brokerage, and real-world costs built in.",
+    },
     alternates: { canonical: "https://trademade.in/backtesting" },
 };
 

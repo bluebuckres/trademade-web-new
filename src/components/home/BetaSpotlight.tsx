@@ -16,7 +16,7 @@ const features = [
 
 const brokerNodes = [
     { name: "Zerodha", logo: "/logos/zerodha6662.jpg" },
-    { name: "Angel One", logo: "/logos/groww_logo-freelogovectors.net_.png" }, // Fallback to Groww image if Angel One is missing
+    { name: "Angel One", logo: "/logos/angelone.png" },
     { name: "Upstox", logo: "/logos/upstox-logo-png_seeklogo-435648.png" },
     { name: "5Paisa", logo: "/logos/5paisa.png" },
     { name: "Alice Blue", logo: "/logos/aliceblue.png" },

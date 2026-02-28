@@ -49,6 +49,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.6,
         },
         {
+            url: `${SITE_URL}/blog/why-backtesting-with-1-minute-data-is-dangerous`,
+            lastModified: now,
+            changeFrequency: "yearly",
+            priority: 0.6,
+        },
+        {
+            url: `${SITE_URL}/blog/building-a-python-execution-engine-from-scratch`,
+            lastModified: now,
+            changeFrequency: "yearly",
+            priority: 0.6,
+        },
+        {
+            url: `${SITE_URL}/blog/how-ai-sentiment-analysis-saved-us-during-the-rbi-policy`,
+            lastModified: now,
+            changeFrequency: "yearly",
+            priority: 0.6,
+        },
+        {
+            url: `${SITE_URL}/blog/why-90-percent-of-backtests-lie-and-how-to-fix-yours`,
+            lastModified: now,
+            changeFrequency: "yearly",
+            priority: 0.6,
+        },
+        {
             url: `${SITE_URL}/contact`,
             lastModified: now,
             changeFrequency: "yearly",

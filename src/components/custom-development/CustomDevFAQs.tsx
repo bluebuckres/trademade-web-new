@@ -2,6 +2,7 @@
 
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { WhatsappLogo, ClipboardText } from "@phosphor-icons/react";
+import Link from "next/link";
 
 const faqs = [
     {
@@ -75,14 +76,14 @@ export function CustomDevFAQs() {
                 <h3 className="font-bold text-white mb-2 text-xl">Ready to Start?</h3>
                 <p className="text-slate-400 text-sm mb-6">Fill out our intake form or send us a WhatsApp message. We respond within a few hours.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button className="px-6 py-3 rounded-full bg-accent hover:bg-accent/90 text-white font-medium text-sm transition-colors shadow-[0_0_15px_rgba(30,107,255,0.3)] flex items-center gap-2">
+                    <a href="https://wa.me/917908158639" target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-full bg-accent hover:bg-accent/90 text-white font-medium text-sm transition-colors shadow-[0_0_15px_rgba(30,107,255,0.3)] flex items-center gap-2 justify-center">
                         <WhatsappLogo size={18} weight="fill" />
                         WhatsApp Us Idea
-                    </button>
-                    <button className="px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white font-medium text-sm transition-colors flex items-center gap-2">
+                    </a>
+                    <Link href="/contact" className="px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white font-medium text-sm transition-colors flex items-center gap-2 justify-center">
                         <ClipboardText size={18} weight="fill" />
                         Fill Intake Form
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>
