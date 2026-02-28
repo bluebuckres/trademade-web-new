@@ -18,8 +18,19 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPost() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Why Backtesting with 1-Minute Data is Dangerous",
+        "image": "https://trademade.in/1-min-data-banner.png",
+        "datePublished": "2024-03-15T00:00:00+00:00",
+        "author": { "@type": "Organization", "name": "TradeMade Research Desk" },
+        "publisher": { "@type": "Organization", "name": "TradeMade", "logo": { "@type": "ImageObject", "url": "https://trademade.in/custom_logo.png" } }
+    };
+
     return (
         <main className="min-h-screen bg-background pt-32 pb-24">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <article className="max-w-3xl mx-auto px-6">
 
                 {/* Back Link */}

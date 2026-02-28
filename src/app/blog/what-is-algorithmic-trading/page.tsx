@@ -17,8 +17,19 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPost() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "What Is Algorithmic Trading? Why Backtesting First Saves You Money",
+        "image": "https://trademade.in/algo-trading-banner.png",
+        "datePublished": "2024-03-10T00:00:00+00:00",
+        "author": { "@type": "Organization", "name": "TradeMade Quant Team" },
+        "publisher": { "@type": "Organization", "name": "TradeMade", "logo": { "@type": "ImageObject", "url": "https://trademade.in/custom_logo.png" } }
+    };
+
     return (
         <main className="min-h-screen bg-background pt-32 pb-24">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <article className="max-w-3xl mx-auto px-6">
 
                 {/* Back Link */}

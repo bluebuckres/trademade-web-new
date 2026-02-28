@@ -17,8 +17,26 @@ export const metadata: Metadata = {
 };
 
 export default function BacktestingPage() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Realistic Backtesting Engine",
+        "description": "Test your strategy on 10+ years of tick data — with slippage, brokerage, and real-world costs built in.",
+        "provider": {
+            "@type": "Organization",
+            "name": "TradeMade",
+            "url": "https://trademade.in"
+        },
+        "serviceType": "Financial Software Data Services",
+        "areaServed": "IN"
+    };
+
     return (
         <div className="flex flex-col w-full overflow-hidden">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <BacktestingHero />
             <FeaturesGrid />
             <Pricing />

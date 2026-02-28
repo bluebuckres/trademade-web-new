@@ -18,8 +18,25 @@ export const metadata: Metadata = {
 };
 
 export default function CustomDevelopmentPage() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Custom Algorithm Development",
+        "description": "Professional quant developers to build your trading bot from rough idea to live deployment on Indian brokers.",
+        "provider": {
+            "@type": "Organization",
+            "name": "TradeMade",
+            "url": "https://trademade.in"
+        },
+        "serviceType": "Software Development"
+    };
+
     return (
         <div className="flex flex-col w-full overflow-hidden">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <CustomDevHero />
             <ProcessSteps />
             <CustomDevPricing />

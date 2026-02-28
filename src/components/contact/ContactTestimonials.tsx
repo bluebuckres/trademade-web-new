@@ -17,7 +17,7 @@ const testimonials = [
         role: "Prop Desk Trader",
         location: "Ahmedabad",
         ethnicity: "Gujarati",
-        text: "We wanted a custom algo for our swing trading setup. The team built it in AFL within a week. First-class support and very transparent pricing and deployment. Saru che!"
+        text: "We wanted a custom algo for our swing trading setup. The team built it in Python within a week. First-class support and very transparent pricing and deployment. Saru che!"
     },
     {
         name: "Mohammed Tariq",

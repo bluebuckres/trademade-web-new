@@ -16,8 +16,18 @@ export const metadata: Metadata = {
 };
 
 export default function RbiPolicyAIPost() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How AI Sentiment Analysis Saved Us During the RBI Policy",
+        "datePublished": "2024-03-02T00:00:00+00:00",
+        "author": { "@type": "Organization", "name": "TradeMade AI Team" },
+        "publisher": { "@type": "Organization", "name": "TradeMade", "logo": { "@type": "ImageObject", "url": "https://trademade.in/custom_logo.png" } }
+    };
+
     return (
         <main className="min-h-screen bg-[#fafaf7] pt-32 pb-24 text-[#0c0c0c] selection:bg-[#1a6b3a]/20 font-sans">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <article className="max-w-[680px] mx-auto px-6">
 
                 {/* Back Link */}

@@ -33,8 +33,18 @@ export const metadata: Metadata = {
 };
 
 export default function BacktestFlawsPost() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why 90% of Backtests Lie — And How to Fix Yours",
+    "datePublished": "2023-12-12T00:00:00+00:00",
+    "author": { "@type": "Organization", "name": "TradeMade Research Desk" },
+    "publisher": { "@type": "Organization", "name": "TradeMade", "logo": { "@type": "ImageObject", "url": "https://trademade.in/custom_logo.png" } }
+  };
+
   return (
     <main className="min-h-screen bg-[#fafaf7] pt-32 pb-24 text-[#0c0c0c] selection:bg-[#c8391e]/20 font-sans">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article className="max-w-[680px] mx-auto px-6">
         {/* Back Link */}
         <Link
