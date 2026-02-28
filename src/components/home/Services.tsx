@@ -22,10 +22,10 @@ const services = [
     {
         tag: "Core",
         title: "Custom Algo Development",
-        body: "Describe your strategy. We code it in Python, AFL, or Pine Script. Tested against historical data, optimised, and deployed to your broker with lifetime maintenance.",
+        body: "Describe your strategy. We code it in Python, C++, AFL, or Pine Script. Tested against historical data, optimised, and deployed to your broker with lifetime maintenance.",
         cta: "Get a Free Quote →",
         href: "/custom-development",
-        features: ["6 broker integrations", "No-code to full custom", "Lifetime support", "NDA-protected"],
+        features: ["20+ broker integrations", "No-code to full custom", "Lifetime support", "NDA-protected"],
         accent: "text-blue-400",
         border: "border-blue-400/40",
         bgLight: "bg-blue-400/10",

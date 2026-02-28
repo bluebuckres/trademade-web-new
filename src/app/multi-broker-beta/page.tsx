@@ -18,8 +18,25 @@ export const metadata: Metadata = {
 };
 
 export default function MultiBrokerBetaPage() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "AI-Powered Multi-Broker Alignment",
+        "description": "Deploy your strategy across Zerodha, Angel One, Upstox simultaneously with AI sentiment risk management.",
+        "provider": {
+            "@type": "Organization",
+            "name": "TradeMade",
+            "url": "https://trademade.in"
+        },
+        "serviceType": "Algorithmic Trading Software"
+    };
+
     return (
         <div className="flex flex-col w-full overflow-hidden">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <BetaHero />
             <BetaFeatures />
             <BetaSteps />
