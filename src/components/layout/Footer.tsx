@@ -65,10 +65,6 @@ export function Footer() {
                         <Link href="/services" className="text-slate-400 hover:text-primary transition-colors">Services</Link>
                         <Link href="/blog" className="text-slate-400 hover:text-primary transition-colors">Blog</Link>
                         <Link href="/contact" className="text-slate-400 hover:text-primary transition-colors">Contact</Link>
-                        <a href="mailto:connect@trademade.in" className="text-slate-400 hover:text-primary transition-colors flex items-center gap-1.5">
-                            <EnvelopeSimple size={14} weight="bold" />
-                            connect@trademade.in
-                        </a>
                         <div className="flex items-center gap-3 mt-2">
                             <a href="https://x.com/trademade_in" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors" aria-label="Twitter/X">
                                 <XLogo size={18} weight="bold" />

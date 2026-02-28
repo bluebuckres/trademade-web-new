@@ -1,6 +1,8 @@
 "use client";
 
 import { AsymmetricContainer } from "@/components/ui/AsymmetricContainer";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import posthog from "posthog-js";
 
 export function ContactHero() {
     return (
@@ -23,9 +25,19 @@ export function ContactHero() {
                     We're not a support ticket queue. We're a small, expert team that responds fast and takes your problem seriously.
                 </p>
 
-                <p className="text-sm font-mono text-primary bg-primary/10 inline-block px-3 py-1 rounded">
+                <p className="text-sm font-mono text-primary bg-primary/10 inline-block px-3 py-1 rounded mb-8">
                     Typical first response: under 2 hours on WhatsApp during market hours.
                 </p>
+
+                <div className="flex justify-center">
+                    <MagneticButton
+                        id="open-popup-button"
+                        className="bg-primary hover:bg-primary-hover text-[#000000] shadow-[0_0_20px_rgba(0,212,170,0.3)] border-none cursor-pointer py-4 px-8 font-bold text-lg"
+                        onClick={() => posthog.capture('cta_clicked', { button: 'book_schedule_call', page: 'contact' })}
+                    >
+                        ▶ Book a Schedule Call
+                    </MagneticButton>
+                </div>
             </div>
         </section>
     );

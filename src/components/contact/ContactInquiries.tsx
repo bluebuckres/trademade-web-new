@@ -70,7 +70,7 @@ export function ContactInquiries() {
                         return (
                             <LiquidGlassCard
                                 key={idx}
-                                className={`p-8 hover:-translate-y-1 transition-transform duration-300 ${item.primary ? 'border-accent/30 shadow-[0_0_30px_rgba(30,107,255,0.1)]' : 'border-white/5'}`}
+                                className={`p-8 hover:-translate-y-1 transition-transform duration-300 ${item.primary ? 'border-accent/30 shadow-[0_0_30px_rgba(30,107,255,0.1)]' : 'border-white/5'} ${idx === 4 ? 'md:col-span-2 lg:col-span-2' : ''}`}
                             >
                                 <div className={`w-12 h-12 rounded-xl bg-${item.color}/10 border border-${item.color}/20 flex items-center justify-center text-${item.color} mb-6`}>
                                     <Icon size={24} weight="duotone" />
