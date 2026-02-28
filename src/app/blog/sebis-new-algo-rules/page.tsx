@@ -38,7 +38,7 @@ export default function SebiAlgoRulesPost() {
     "@type": "Article",
     headline:
       "SEBI's New Algo Rules Are Here. Here's Exactly What Changes for You.",
-    datePublished: "2024-07-25T00:00:00+00:00",
+    datePublished: "2025-07-25T00:00:00+00:00",
     author: { "@type": "Organization", name: "TradeMade Compliance Desk" },
     publisher: {
       "@type": "Organization",

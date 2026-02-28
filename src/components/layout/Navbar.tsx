@@ -13,6 +13,7 @@ const navLinks = [
     { name: "Backtesting", href: "/backtesting" },
     { name: "Custom Algo Dev", href: "/custom-development" },
     { name: "AI Multi-Broker", href: "/multi-broker-beta" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Services", href: "/services" },
     { name: "Blog", href: "/blog" },
 ];

@@ -2,6 +2,8 @@
 
 import { AsymmetricContainer } from "@/components/ui/AsymmetricContainer";
 
+import Image from "next/image";
+
 const steps = [
     { num: "01", title: "Submit Your Idea", desc: "Share your strategy via WhatsApp or email. Plain English is fine. Attach screenshots, TradingView charts, or a voice note. We ask clarifying questions to define the exact scope." },
     { num: "02", title: "Free Quote & Scoping", desc: "Within 24–48 hours, you receive a detailed project scope: deliverables, timeline, pricing tier, and tech stack. Approval required before any work starts." },
@@ -26,22 +28,14 @@ export function ProcessSteps() {
             <AsymmetricContainer ratio="30/70" className="items-start max-w-6xl mx-auto">
                 {/* Left Side: Sticky Visual / CTA */}
                 <div className="sticky top-32 hidden md:block w-full">
-                    <div className="aspect-[3/4] rounded-[2rem] bg-gradient-to-b from-accent/20 to-transparent border border-accent/20 p-8 flex flex-col relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-accent/30 blur-[60px]" />
-
-                        <h3 className="text-white font-satoshi font-bold text-2xl mb-4">Start Your Build</h3>
-                        <p className="text-slate-300 text-sm leading-relaxed mb-8">
-                            Typical starter projects are delivered in 3-7 days. What are you waiting for?
-                        </p>
-
-                        <div className="mt-auto space-y-3">
-                            <button className="w-full py-4 rounded-xl bg-accent hover:bg-accent/90 text-white font-medium transition-colors">
-                                Get a Free Quote
-                            </button>
-                            <button className="w-full py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium border border-white/10 transition-colors">
-                                WhatsApp Us
-                            </button>
-                        </div>
+                    <div className="aspect-[3/4] rounded-[2rem] border border-white/10 shadow-2xl relative overflow-hidden flex items-center justify-center p-2 bg-black/50">
+                        <Image
+                            src="/images/architecture.png"
+                            alt="Algorithmic Trading System Architecture Diagram"
+                            fill
+                            className="object-cover rounded-2xl opacity-90"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                        />
                     </div>
                 </div>
 

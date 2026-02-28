@@ -13,6 +13,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1.0,
         },
         {
+            url: `${SITE_URL}/about`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.9,
+        },
+        {
+            url: `${SITE_URL}/pricing`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.9,
+        },
+        {
+            url: `${SITE_URL}/how-to-use`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.8,
+        },
+        {
             url: `${SITE_URL}/backtesting`,
             lastModified: now,
             changeFrequency: "monthly",
@@ -67,7 +85,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.6,
         },
         {
+            url: `${SITE_URL}/blog/sebis-new-algo-rules`,
+            lastModified: now,
+            changeFrequency: "yearly",
+            priority: 0.6,
+        },
+        {
             url: `${SITE_URL}/blog/why-90-percent-of-backtests-lie-and-how-to-fix-yours`,
+            lastModified: now,
+            changeFrequency: "yearly",
+            priority: 0.6,
+        },
+        {
+            url: `${SITE_URL}/blog/how-ai-sentiment-analysis-saved-us-during-the-rbi-policy`,
             lastModified: now,
             changeFrequency: "yearly",
             priority: 0.6,

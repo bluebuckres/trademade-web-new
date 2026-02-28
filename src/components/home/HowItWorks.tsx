@@ -2,6 +2,8 @@
 
 import { AsymmetricContainer } from "@/components/ui/AsymmetricContainer";
 
+import Image from "next/image";
+
 const steps = [
     { num: "01", title: "Define Your Strategy", desc: "Tell us your entry/exit rules — using plain English, TradingView alerts, or AFL/Python code. Our team helps translate any format." },
     { num: "02", title: "Select Universe", desc: "Choose instruments (NSE/BSE equities, F&O, indices), timeframe (1-min to daily), and date range (up to 10 years of tick data)." },
@@ -26,30 +28,14 @@ export function HowItWorks() {
                 {/* Left Side: Mockups */}
                 <div className="w-full relative min-h-[400px] flex items-center justify-center">
                     <div className="absolute w-64 h-64 bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
-                    <div className="relative w-full aspect-square md:aspect-[4/5] rounded-[2rem] bg-surface border border-white/5 shadow-2xl p-6 overflow-hidden flex flex-col gap-4">
-                        {/* Fake Mockup UI blocks */}
-                        <div className="w-full h-12 rounded-xl bg-white/5 border border-white/10 flex items-center px-4 gap-3">
-                            <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                            <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                            <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                        </div>
-                        <div className="flex-1 flex gap-4">
-                            <div className="w-1/3 h-full rounded-xl bg-white/5 border border-white/10 p-4 space-y-4">
-                                <div className="w-full h-2 bg-white/10 rounded-full" />
-                                <div className="w-2/3 h-2 bg-white/10 rounded-full" />
-                                <div className="w-full h-8 bg-primary/20 rounded-md mt-6" />
-                                <div className="w-full h-2 bg-white/10 rounded-full" />
-                            </div>
-                            <div className="w-2/3 h-full rounded-xl bg-gradient-to-br from-surface to-background border border-white/10 p-4 flex flex-col gap-4">
-                                <div className="w-full flex-1 rounded-xl bg-primary/10 border border-primary/20 relative overflow-hidden">
-                                    <svg className="absolute inset-0 w-full h-full text-primary" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                        <path d="M0,100 L0,80 Q25,90 50,60 T100,20 L100,100 Z" fill="currentColor" opacity="0.2" />
-                                        <path d="M0,80 Q25,90 50,60 T100,20" fill="none" stroke="currentColor" strokeWidth="2" />
-                                    </svg>
-                                </div>
-                                <div className="w-full h-1/3 rounded-xl bg-white/5 border border-white/10" />
-                            </div>
-                        </div>
+                    <div className="relative w-full aspect-square md:aspect-[4/5] rounded-[2rem] bg-surface border border-white/5 shadow-2xl overflow-hidden flex flex-col items-center justify-center p-2">
+                        <Image
+                            src="/images/backtesting_mockup.png"
+                            alt="TradeMade High-Precision Strategy Backtesting Interface"
+                            fill
+                            className="object-cover rounded-2xl opacity-90"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                        />
                     </div>
                 </div>
 
