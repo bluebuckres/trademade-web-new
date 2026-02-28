@@ -4,6 +4,7 @@ import { AsymmetricContainer } from "@/components/ui/AsymmetricContainer";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ConsoleAnimation } from "@/components/ui/ConsoleAnimation";
 import { WhatsappLogo } from "@phosphor-icons/react";
+import posthog from "posthog-js";
 
 export function Hero() {
     return (
@@ -37,10 +38,15 @@ export function Hero() {
                         <MagneticButton
                             id="open-popup-button"
                             className="bg-primary hover:bg-primary-hover text-[#000000] shadow-[0_0_20px_rgba(0,212,170,0.3)] border-none cursor-pointer"
+                            onClick={() => posthog.capture('cta_clicked', { button: 'book_quick_call', page: 'homepage' })}
                         >
                             ▶ Book a Quick Call
                         </MagneticButton>
-                        <MagneticButton href="https://wa.me/917908158639" className="bg-transparent border border-white/10 hover:bg-white/5 text-white flex gap-2 items-center px-6">
+                        <MagneticButton
+                            href="https://wa.me/917908158639"
+                            className="bg-transparent border border-white/10 hover:bg-white/5 text-white flex gap-2 items-center px-6"
+                            onClick={() => posthog.capture('cta_clicked', { button: 'whatsapp_us', page: 'homepage' })}
+                        >
                             <WhatsappLogo size={20} weight="fill" className="text-[#25D366]" />
                             WhatsApp Us
                         </MagneticButton>

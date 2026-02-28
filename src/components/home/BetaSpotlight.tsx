@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { LiquidGlassCard } from "@/components/ui/LiquidGlassCard";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import posthog from "posthog-js";
 
 const features = [
     "Real-time order mirroring across 20+ brokers",
@@ -68,7 +69,11 @@ export function BetaSpotlight() {
                             </ul>
 
                             <div className="flex flex-wrap items-center gap-6">
-                                <MagneticButton href="/multi-broker-beta" className="bg-primary hover:bg-primary-hover text-[#000000] shadow-[0_0_20px_rgba(0,212,170,0.3)] border-none rounded-xl py-3.5 px-6 font-bold text-sm">
+                                <MagneticButton
+                                    href="/multi-broker-beta"
+                                    className="bg-primary hover:bg-primary-hover text-[#000000] shadow-[0_0_20px_rgba(0,212,170,0.3)] border-none rounded-xl py-3.5 px-6 font-bold text-sm"
+                                    onClick={() => posthog.capture('cta_clicked', { button: 'join_beta_waitlist', page: 'homepage' })}
+                                >
                                     Join Beta Waitlist →
                                 </MagneticButton>
                                 <div className="text-slate-400 text-sm flex items-center font-medium">

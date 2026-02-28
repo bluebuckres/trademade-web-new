@@ -4,6 +4,7 @@ import { AsymmetricContainer } from "@/components/ui/AsymmetricContainer";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { TerminalTypewriter } from "@/components/ui/TerminalTypewriter";
 import { WhatsappLogo, ClipboardText } from "@phosphor-icons/react";
+import posthog from "posthog-js";
 
 export function CustomDevHero() {
     return (
@@ -28,11 +29,19 @@ export function CustomDevHero() {
                     </p>
 
                     <div className="flex flex-wrap items-center gap-4">
-                        <MagneticButton href="/contact" className="bg-accent hover:bg-accent/80 text-white shadow-[0_0_20px_rgba(30,107,255,0.3)] border-none flex items-center gap-2">
+                        <MagneticButton
+                            href="/contact"
+                            className="bg-accent hover:bg-accent/80 text-white shadow-[0_0_20px_rgba(30,107,255,0.3)] border-none flex items-center gap-2"
+                            onClick={() => posthog.capture('cta_clicked', { button: 'describe_your_idea', page: 'custom_development' })}
+                        >
                             <WhatsappLogo size={20} weight="fill" />
                             Describe Your Idea
                         </MagneticButton>
-                        <MagneticButton href="/contact" className="bg-transparent border border-white/10 hover:bg-white/5 text-white flex items-center gap-2">
+                        <MagneticButton
+                            href="/contact"
+                            className="bg-transparent border border-white/10 hover:bg-white/5 text-white flex items-center gap-2"
+                            onClick={() => posthog.capture('cta_clicked', { button: 'request_free_quote', page: 'custom_development' })}
+                        >
                             <ClipboardText size={20} weight="fill" />
                             Request Free Quote
                         </MagneticButton>
