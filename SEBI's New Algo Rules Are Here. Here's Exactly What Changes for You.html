@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEBI's New Algo Rules Are Here. Here's Exactly What Changes for You | TradeMade</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0a0a0a;
+            --bg: #f7f4ef;
+            --accent: #2c5f2e;
+            --red: #c0392b;
+            --amber: #b8860b;
+            --muted: #686868;
+            --rule: #dad5cc;
+            --surf: #edeae2;
+            --badge-blue: #1a3a5c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 17px;
+            line-height: 1.82;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── TOP BAR ── */
+        .topbar {
+            background: var(--badge-blue);
+            color: #e8f0f8;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+        }
+
+        .topbar b {
+            color: #ffcc44;
+        }
+
+        /* ── NAV ── */
+        nav {
+            border-bottom: 1px solid var(--rule);
+            padding: 15px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: white;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 9px 18px;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: background .2s;
+        }
+
+        .nav-cta:hover {
+            background: #1e4220;
+        }
+
+        /* ── ARTICLE ── */
+        article {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .post-header {
+            padding: 52px 0 36px;
+            border-bottom: 2px solid var(--ink);
+            margin-bottom: 44px;
+        }
+
+        .cat-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .cat-tag {
+            font-family: 'Syne', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .dot {
+            color: var(--rule);
+        }
+
+        .date-tag {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--muted);
+        }
+
+        .live-pill {
+            background: rgba(192, 57, 43, 0.1);
+            color: var(--red);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border: 1px solid rgba(192, 57, 43, 0.25);
+            animation: breathe 2s infinite;
+        }
+
+        @keyframes breathe {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(28px, 6vw, 48px);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+            color: var(--ink);
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .deck {
+            font-size: 18px;
+            font-weight: 300;
+            color: #3a3a3a;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+        }
+
+        .read-meta {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        p {
+            margin-bottom: 24px;
+            font-weight: 300;
+            color: #1c1c1c;
+        }
+
+        h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 52px 0 16px;
+        }
+
+        h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin: 28px 0 8px;
+        }
+
+        /* ── TIMELINE / HISTORY ── */
+        .reg-history {
+            background: var(--surf);
+            border: 1px solid var(--rule);
+            padding: 24px 24px;
+            margin: 36px 0;
+        }
+
+        .rh-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .rh-row {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 14px;
+            align-items: flex-start;
+        }
+
+        .rh-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .rh-date {
+            font-family: 'Syne', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: white;
+            background: var(--badge-blue);
+            padding: 3px 10px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .rh-text {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .rh-text b {
+            font-weight: 600;
+        }
+
+        /* ── RULE CARDS ── */
+        .rule-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 36px 0;
+        }
+
+        .rule-card {
+            border: 1px solid var(--rule);
+            overflow: hidden;
+        }
+
+        .rc-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--surf);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .rc-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--accent);
+            flex-shrink: 0;
+            min-width: 28px;
+        }
+
+        .rc-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .rc-status {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            flex-shrink: 0;
+        }
+
+        .st-hard {
+            background: rgba(192, 57, 43, 0.1);
+            color: var(--red);
+            border: 1px solid rgba(192, 57, 43, 0.2);
+        }
+
+        .st-reg {
+            background: rgba(184, 134, 11, 0.1);
+            color: var(--amber);
+            border: 1px solid rgba(184, 134, 11, 0.2);
+        }
+
+        .st-soft {
+            background: rgba(44, 95, 46, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(44, 95, 46, 0.2);
+        }
+
+        .rc-body {
+            padding: 16px 18px;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        .rc-body p {
+            margin: 0 0 10px;
+        }
+
+        .rc-body p:last-child {
+            margin: 0;
+        }
+
+        .rc-note {
+            display: flex;
+            gap: 8px;
+            background: rgba(184, 134, 11, 0.06);
+            border-left: 3px solid var(--amber);
+            padding: 10px 14px;
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: 400;
+            color: #5a4a00;
+        }
+
+        /* ── IMPACT TABLE ── */
+        .impact-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 36px 0;
+            font-size: 14px;
+        }
+
+        .impact-table th {
+            font-family: 'Syne', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-align: left;
+            padding: 10px 14px;
+            background: var(--ink);
+            color: white;
+            font-weight: 700;
+        }
+
+        .impact-table td {
+            padding: 13px 14px;
+            border-bottom: 1px solid var(--rule);
+            font-weight: 300;
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        .impact-table tr:nth-child(even) td {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-r {
+            background: rgba(192, 57, 43, 0.1);
+            color: var(--red);
+        }
+
+        .tag-a {
+            background: rgba(184, 134, 11, 0.1);
+            color: var(--amber);
+        }
+
+        .tag-g {
+            background: rgba(44, 95, 46, 0.1);
+            color: var(--accent);
+        }
+
+        /* ── PULLQUOTE ── */
+        .pullquote {
+            padding: 26px 0;
+            margin: 44px 0;
+            border-top: 2px solid var(--ink);
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .pullquote p {
+            font-family: 'Fraunces', serif;
+            font-size: 22px;
+            font-weight: 600;
+            font-style: italic;
+            line-height: 1.4;
+            color: var(--ink);
+            margin: 0;
+        }
+
+        /* ── WHAT TO DO NOW ── */
+        .action-box {
+            background: var(--ink);
+            color: white;
+            padding: 32px 28px;
+            margin: 44px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-box::after {
+            content: '→';
+            position: absolute;
+            right: 16px;
+            bottom: -20px;
+            font-size: 140px;
+            color: rgba(255, 255, 255, 0.04);
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .ab-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #ffcc44;
+            margin-bottom: 14px;
+        }
+
+        .ab-list {
+            list-style: none;
+        }
+
+        .ab-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 14px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            line-height: 1.55;
+        }
+
+        .ab-list li:last-child {
+            border-bottom: none;
+        }
+
+        .ab-check {
+            color: #7fffa8;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ── LEAD CAPTURE ── */
+        .lead-capture {
+            background: var(--accent);
+            color: white;
+            padding: 44px 32px;
+            margin: 60px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lead-capture::before {
+            content: '01';
+            position: absolute;
+            right: -10px;
+            bottom: -30px;
+            font-family: 'Fraunces', serif;
+            font-size: 180px;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.05);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .lead-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-family: 'Syne', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .lead-capture h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
+            line-height: 1.25;
+            color: white;
+        }
+
+        .lead-capture .sub {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.72);
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+
+        .offer-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .op {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 12px;
+            font-weight: 500;
+            padding: 5px 12px;
+        }
+
+        .phone-row {
+            display: flex;
+            max-width: 440px;
+        }
+
+        .ph-prefix {
+            background: rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: none;
+            padding: 13px 14px;
+            font-size: 15px;
+            flex-shrink: 0;
+            font-weight: 500;
+        }
+
+        .ph-input {
+            flex: 1;
+            min-width: 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: none;
+            padding: 13px 16px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+        }
+
+        .ph-input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .ph-input:focus {
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .ph-btn {
+            background: white;
+            color: var(--accent);
+            border: none;
+            padding: 13px 18px;
+            font-family: 'Syne', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: background .2s;
+        }
+
+        .ph-btn:hover {
+            background: #eee;
+        }
+
+        .fine {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.35);
+            margin-top: 12px;
+            margin-bottom: 0;
+        }
+
+        .success-state {
+            display: none;
+            max-width: 440px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: white;
+            padding: 14px 18px;
+            font-size: 14px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--rule);
+            padding: 28px 24px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted);
+            font-weight: 300;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* ── FADE ── */
+        .fi {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .55s ease, transform .55s ease;
+        }
+
+        .fi.v {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 600px) {
+            article {
+                padding: 0 18px 60px;
+            }
+
+            .phone-row {
+                flex-wrap: wrap;
+            }
+
+            .ph-prefix {
+                width: 100%;
+                border-right: 1px solid rgba(255, 255, 255, 0.2);
+                border-bottom: none;
+            }
+
+            .ph-input {
+                width: 100%;
+                border-right: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .ph-btn {
+                width: 100%;
+            }
+
+            .lead-capture {
+                padding: 32px 20px;
+            }
+
+            .impact-table {
+                font-size: 13px;
+            }
+
+            .impact-table th,
+            .impact-table td {
+                padding: 10px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar" onclick="document.querySelector('.lead-capture').scrollIntoView({behavior:'smooth'})">
+        📋 Running an algo? The April 1, 2026 SEBI deadline affects you. <b>Talk to TradeMade — free compliance check
+            →</b>
+    </div>
+
+    <nav>
+        <a class="logo" href="#">Trade<span>Made</span></a>
+        <button class="nav-cta"
+            onclick="document.querySelector('.lead-capture').scrollIntoView({behavior:'smooth'})">Free Consult</button>
+    </nav>
+
+    <article>
+
+        <header class="post-header fi">
+            <div class="cat-row">
+                <span class="cat-tag">Regulation</span>
+                <span class="dot">·</span>
+                <span class="date-tag">25 July 2024</span>
+                <span class="dot">·</span>
+                <span class="live-pill">Deadline: Apr 1 2026</span>
+            </div>
+            <h1>SEBI's New Algo Rules Are Here. <em>Here's Exactly What Changes for You.</em></h1>
+            <p class="deck">The NSE circular on API operating procedures is the most significant regulatory shift for
+                algo traders since DMA. We break down every requirement — and what you actually need to do before April
+                1, 2026.</p>
+            <p class="read-meta">8 min read &nbsp;·&nbsp; TradeMade Compliance Desk</p>
+        </header>
+
+        <p class="fi">If you run a Python script that places orders through a broker API — or even use a third-party
+            tool like Stoxoo, AlgoBaba, or any scanner with auto-execute — SEBI's new framework touches you directly.
+            This isn't a rule aimed at HFT firms. It's aimed at the retail algo trader. That's you.</p>
+
+        <p class="fi">Here's everything that matters, stripped of the circular's bureaucratic language.</p>
+
+        <h2 class="fi">How We Got Here</h2>
+
+        <div class="reg-history fi">
+            <div class="rh-label">Regulatory Timeline</div>
+            <div class="rh-row">
+                <span class="rh-date">Feb 2025</span>
+                <div class="rh-text">SEBI releases circular on <b>"Safer Participation of Retail Investors in
+                        Algorithmic Trading."</b> Sets the broad framework. Go-live announced as August 1, 2025.</div>
+            </div>
+            <div class="rh-row">
+                <span class="rh-date">Jul 2025</span>
+                <div class="rh-text">NSE releases detailed operational modalities — the actual rules brokers must
+                    implement. Only 10 days before the August 1 deadline. Brokers, understandably, ask for more time.
+                </div>
+            </div>
+            <div class="rh-row">
+                <span class="rh-date">Jul 2025</span>
+                <div class="rh-text">Deadline extended to <b>October 1, 2025.</b> Still not enough time for vendors
+                    supplying order management systems to multiple brokers.</div>
+            </div>
+            <div class="rh-row">
+                <span class="rh-date">Sep 2025</span>
+                <div class="rh-text">SEBI extends again. <b>Final deadline: April 1, 2026.</b> All stock brokers must
+                    comply from this date.</div>
+            </div>
+        </div>
+
+        <p class="fi">Three deadline extensions tell you something important: this is genuinely complex to implement at
+            the broker level. The static IP requirement alone required changes to order routing infrastructure that
+            brokers share with a common vendor. Even large brokers like Zerodha confirmed they were waiting on those
+            vendor-side changes.</p>
+
+        <h2 class="fi">The Three Rules That Change Everything</h2>
+
+        <div class="rule-grid fi">
+
+            <div class="rule-card">
+                <div class="rc-head">
+                    <span class="rc-num">01</span>
+                    <span class="rc-title">Static IP Mandatory for All Order APIs</span>
+                    <span class="rc-status st-hard">Mandatory</span>
+                </div>
+                <div class="rc-body">
+                    <p>Every API order request must originate from a pre-registered static IP address. You'll register
+                        up to two IPs (one primary, one backup) on your broker's developer console. Orders arriving from
+                        any other IP will be rejected.</p>
+                    <p>This applies to <em>all</em> API users — not just high-frequency traders. Even if you send 2
+                        orders a day, you need a static IP. The check is only on order placement endpoints; WebSocket
+                        data feeds and other read-only endpoints are unaffected.</p>
+                    <div class="rc-note">
+                        ⚠ Standard JioFiber, Airtel home broadband, and most consumer ISPs do not provide static IPs by
+                        default. You'll need to request one from your ISP — or route your API calls through a cloud
+                        instance (AWS/GCP) with a reserved Elastic IP.
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rc-head">
+                    <span class="rc-num">02</span>
+                    <span class="rc-title">10 Orders Per Second Hard Limit — Per Client</span>
+                    <span class="rc-status st-hard">Mandatory</span>
+                </div>
+                <div class="rc-body">
+                    <p>The API rate limit for order placement is capped at 10 orders per second, per client account. If
+                        you exceed this, the broker will return a 429 (Too Many Requests) error and reject the excess
+                        orders. This is enforced at the exchange level, not just the broker's API.</p>
+                    <p>Important clarification from Zerodha: the 10 OPS limit is per client ID, not per app or API key.
+                        If you run multiple strategies under one Zerodha login, they collectively share the same 10 OPS
+                        budget. Iceberg orders count as a single order toward the limit.</p>
+                    <div class="rc-note">
+                        ✓ Most retail strategies — including multi-leg options plays and basket orders — operate well
+                        within 10 OPS. This rule primarily targets HFT-style scalping setups.
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rc-head">
+                    <span class="rc-num">03</span>
+                    <span class="rc-title">Algo Registration for &gt;10 OPS Strategies</span>
+                    <span class="rc-status st-reg">If Applicable</span>
+                </div>
+                <div class="rc-body">
+                    <p>If your strategy genuinely needs to place more than 10 orders per second, you must formally
+                        register it with your broker. Registration requires a strategy writeup, an RMS (Risk Management
+                        System) writeup, and an auditor certificate (Annexure 7 under the NSE circular).</p>
+                    <p>Broker community has pushed back on the auditor certificate requirement — Zerodha, among others,
+                        has made representations to the exchange to remove it. Pricing for exchange-level registration
+                        will be passed on to the trader; exact fees haven't been fixed yet.</p>
+                    <div class="rc-note">
+                        ℹ The initial SOP requirement that all algos must be hosted on the broker's cloud has been
+                        strongly contested by brokers and is expected to be revised. As of now, self-hosted setups are
+                        not being explicitly blocked.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="fi">The Market Order Restriction Nobody Noticed</h2>
+
+        <p class="fi">Buried in the same set of changes: market orders via API will no longer be allowed in the
+            commodity segment at all. For equity, index, and currency segments, market orders will continue — but with
+            automatic market protection applied. This means your <code>order_type=MARKET</code> call will be converted
+            to a limit order with a price band around the last traded price before hitting the exchange. Zerodha
+            confirmed this will be applied automatically without requiring any change to your code.</p>
+
+        <p class="fi">What this means practically: if you run a strategy that fires market orders during highly illiquid
+            moments (pre-open, circuit filters, thin options strikes), your fills may now behave differently. Test this
+            explicitly before April 1.</p>
+
+        <div class="pullquote fi">
+            <p>"The operational modalities were only published in July with an August go-live. Even brokers building
+                this found it genuinely complex. Don't assume your setup is compliant just because orders went through
+                last month."</p>
+        </div>
+
+        <h2 class="fi">Impact by Trader Type</h2>
+
+        <table class="impact-table fi">
+            <thead>
+                <tr>
+                    <th>You Are</th>
+                    <th>Static IP</th>
+                    <th>Registration</th>
+                    <th>Market Orders</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Retail API user, &lt;10 OPS</strong><br><span
+                            style="font-size:13px;color:#666">Python/AFL scripts, scanners with auto-execute</span></td>
+                    <td><span class="tag tag-r">Required</span></td>
+                    <td><span class="tag tag-g">Not needed</span></td>
+                    <td><span class="tag tag-a">Protected</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Third-party tool user</strong><br><span style="font-size:13px;color:#666">Stoxoo,
+                            AlgoBaba, etc. via your own API key</span></td>
+                    <td><span class="tag tag-r">Required</span></td>
+                    <td><span class="tag tag-g">Not needed</span></td>
+                    <td><span class="tag tag-a">Protected</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Data-only API user</strong><br><span style="font-size:13px;color:#666">WebSocket feeds,
+                            charting, no order placement</span></td>
+                    <td><span class="tag tag-g">Not needed</span></td>
+                    <td><span class="tag tag-g">Not needed</span></td>
+                    <td><span class="tag tag-g">No change</span></td>
+                </tr>
+                <tr>
+                    <td><strong>High-frequency / &gt;10 OPS</strong><br><span style="font-size:13px;color:#666">Market
+                            making, scalping, multi-account mirrors</span></td>
+                    <td><span class="tag tag-r">Required</span></td>
+                    <td><span class="tag tag-r">Required</span></td>
+                    <td><span class="tag tag-a">Restricted</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Commodity segment traders</strong><br><span style="font-size:13px;color:#666">MCX
+                            strategies via API</span></td>
+                    <td><span class="tag tag-r">Required</span></td>
+                    <td><span class="tag tag-g">If &lt;10 OPS, no</span></td>
+                    <td><span class="tag tag-r">Blocked</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="fi">What You Need to Do Before April 1</h2>
+
+        <div class="action-box fi">
+            <div class="ab-label">// Your Pre-April 1 Checklist</div>
+            <ul class="ab-list">
+                <li><span class="ab-check">→</span> <span>Get a static IP. Contact your ISP for a dedicated IP, or
+                        deploy your algo on a cloud VM (AWS EC2, GCP, DigitalOcean) and assign a reserved static IP to
+                        it. Budget ₹500–₹2,000/month depending on approach.</span></li>
+                <li><span class="ab-check">→</span> <span>Register the IP on your broker's developer console once the
+                        feature goes live. Zerodha confirmed a March 2026 rollout. You can register one primary and one
+                        backup IP.</span></li>
+                <li><span class="ab-check">→</span> <span>Audit your OPS. Add logging to count orders placed per second
+                        at peak. If you're breaching 10 OPS even briefly, restructure your execution logic — batch
+                        orders where possible, add rate limiting in code.</span></li>
+                <li><span class="ab-check">→</span> <span>Test market order behaviour. After the update goes live, run
+                        paper tests specifically on your market order fills to understand how market protection affects
+                        your average fill price.</span></li>
+                <li><span class="ab-check">→</span> <span>If you're in commodities (MCX), replace all API market orders
+                        with limit orders immediately. Don't wait for the deadline — start testing now.</span></li>
+                <li><span class="ab-check">→</span> <span>If you manage family accounts on a shared IP, confirm with
+                        your broker that joint-family IP sharing is supported in their implementation. The NSE circular
+                        permits this but implementation varies by broker.</span></li>
+            </ul>
+        </div>
+
+        <p class="fi">The April 1 deadline is firm. SEBI has extended twice already and has made clear this is the final
+            date. Brokers who miss compliance risk exchange penalties. Traders whose setups aren't ready will simply
+            have their order API calls rejected from that date — not gracefully warned, just rejected.</p>
+
+        <!-- LEAD CAPTURE -->
+        <div class="lead-capture fi">
+            <span class="lead-badge">Free Compliance Check</span>
+            <h3>Not Sure If Your Algo Setup Is April 1 Ready? Let Us Check.</h3>
+            <p class="sub">TradeMade's team will audit your current setup — static IP configuration, OPS exposure, order
+                type dependencies — and walk you through exactly what needs to change. Free, no obligation. Drop your
+                number.</p>
+
+            <div class="offer-pills">
+                <span class="op">Static IP setup guidance</span>
+                <span class="op">OPS audit for your strategy</span>
+                <span class="op">Market order impact analysis</span>
+                <span class="op">Algo registration support</span>
+                <span class="op">Multi-broker deployment</span>
+            </div>
+
+            <div class="phone-row" id="phoneForm">
+                <span class="ph-prefix">🇮🇳 +91</span>
+                <input class="ph-input" id="phoneInput" type="tel" inputmode="numeric" maxlength="10"
+                    placeholder="98XXXXXXXX" />
+                <button class="ph-btn" onclick="handleSubmit()">Get Free Check →</button>
+            </div>
+            <div class="success-state" id="successMsg">
+                ✅ Got it. We'll WhatsApp you within 24 hours for your free compliance check.
+            </div>
+            <p class="fine">No spam. No cold calls. Just a straight audit of what you need to fix.</p>
+        </div>
+
+        <p class="fi">SEBI's intent here is traceability, not restriction. A static IP creates a verifiable audit trail
+            linking every order to a specific machine and account. The 10 OPS cap prevents retail API infrastructure
+            from being used as a disguised HFT vehicle. These are reasonable goals. The compliance cost for the vast
+            majority of retail algo traders — getting a static IP and staying under 10 OPS — is genuinely low. Don't let
+            the complexity of the circular distract from how straightforward most of the actual requirements are.</p>
+
+    </article>
+
+    <footer>
+        © 2024 <strong>TradeMade</strong> &nbsp;·&nbsp; <a href="#">Backtesting</a> &nbsp;·&nbsp; <a href="#">Algo
+            Dev</a> &nbsp;·&nbsp; <a href="#">AI Multi-Broker</a>
+    </footer>
+
+    <script>
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+        function handleSubmit() {
+            const val = document.getElementById('phoneInput').value.replace(/\D/g, '');
+            const inp = document.getElementById('phoneInput');
+            if (val.length !== 10) { inp.style.borderColor = 'rgba(255,255,255,0.8)'; inp.focus(); return; }
+            inp.style.borderColor = '';
+            document.getElementById('phoneForm').style.display = 'none';
+            document.getElementById('successMsg').style.display = 'block';
+            console.log('Lead: +91' + val);
+        }
+        document.getElementById('phoneInput').addEventListener('keydown', e => {
+            document.getElementById('phoneInput').style.borderColor = '';
+            if (e.key === 'Enter') handleSubmit();
+        });
+    </script>
+</body>
+
+</html>

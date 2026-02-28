@@ -26,6 +26,16 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
+    title:
+      "SEBI's New Algo Rules Are Here. Here's Exactly What Changes for You.",
+    excerpt:
+      "The NSE circular on API operating procedures is the most significant regulatory shift for algo traders since DMA. We break down every requirement.",
+    slug: "/blog/sebis-new-algo-rules",
+    date: "Jul 25, 2024",
+    category: "Regulation",
+    readTime: "8 min read",
+  },
+  {
     title: "Why 90% of Backtests Lie — And How to Fix Yours",
     excerpt:
       "The most common mistakes traders make when testing strategies, and the slippage model that changes everything.",
