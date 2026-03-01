@@ -36,6 +36,14 @@ const faqs = [
     {
         question: "What programming languages do you use?",
         answer: "Primarily Python (for broker API integrations and live trading). AFL for AmiBroker backtesting. Pine Script for TradingView-based strategies. We choose the stack best suited to your broker."
+    },
+    {
+        question: "Can you build in C++ or Rust for low-latency requirements?",
+        answer: "Yes. For HFT or latency-sensitive strategies, we build execution engines in C++ or Rust. Python is used for strategy logic and signal processing where microsecond performance isn't critical. We recommend the right language based on your actual execution requirements."
+    },
+    {
+        question: "Can you integrate Telegram signal bots or OpenAI-powered automation?",
+        answer: "Absolutely. We build Telegram bots that receive signals and fire orders across multiple broker accounts in real time. We also integrate OpenAI/LLM models for news sentiment analysis, earnings call processing, and event-driven triggers. These are standard features in our Pro and Enterprise tiers."
     }
 ];
 
@@ -54,7 +62,7 @@ export function CustomDevFAQs() {
     };
 
     return (
-        <section className="py-24 relative bg-surface/20 border-t border-white/5">
+        <section className="py-24 relative bg-surface/40 border-t border-white/10 shadow-[inset_0_20px_40px_-15px_rgba(0,0,0,0.3)]">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

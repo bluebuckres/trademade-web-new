@@ -8,6 +8,7 @@ const plans = [
         name: "Starter",
         priceRange: "₹15k – ₹50k",
         tagline: "Best for simple, rule-based strategies.",
+        subTagline: "Simple rule-based strategies. Single broker. No AI/LLM.",
         features: [
             { text: "Up to 5 entry/exit conditions" },
             { text: "1 instrument (equity, futures, options)" },
@@ -25,6 +26,7 @@ const plans = [
         name: "Pro",
         priceRange: "₹50k – ₹1.5L",
         tagline: "Best for multi-leg options & SEBI RAs processing at scale.",
+        subTagline: "Multi-leg options, SEBI RA tools, multi-account, Telegram bots included.",
         features: [
             { text: "Complex multi-leg options logic" },
             { text: "Up to 3 broker integrations" },
@@ -42,6 +44,7 @@ const plans = [
         name: "Enterprise",
         priceRange: "Custom",
         tagline: "For institutions, prop desks & HNIs.",
+        subTagline: "C++/Rust engines, AI news triggers, white-label, static IP, custom SLA.",
         features: [
             { text: "Unlimited complexity & instruments" },
             { text: "Full ATS development" },
@@ -74,16 +77,22 @@ export function CustomDevPricing() {
                     <LiquidGlassCard
                         key={idx}
                         className={`p-8 flex flex-col relative transition-transform duration-500 rounded-3xl ${plan.highlight
-                            ? "border-accent/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_0_50px_-15px_rgba(30,107,255,0.2)] md:-translate-y-4 z-10 bg-surface/60"
-                            : "border-white/10 bg-surface/20 hover:bg-surface/30 scale-100"
+                            ? "border-accent/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_0_50px_-15px_rgba(30,107,255,0.2)] md:-translate-y-4 z-10 bg-[#1A1C23]"
+                            : "border-white/10 bg-[#13151A] hover:bg-[#1A1C23] scale-100"
                             }`}
                     >
                         {plan.highlight && (
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent" />
+                            <>
+                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent" />
+                                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-accent text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-[0_0_15px_rgba(30,107,255,0.5)]">
+                                    Most Popular
+                                </div>
+                            </>
                         )}
 
                         <h3 className="font-satoshi text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                        <p className="text-sm text-slate-400 mb-6 h-10">{plan.tagline}</p>
+                        <p className="text-sm text-slate-400 mb-2 h-10">{plan.tagline}</p>
+                        <p className="text-xs text-slate-500 mb-6 h-10 italic">{plan.subTagline}</p>
 
                         <div className="flex items-baseline gap-1 mb-8 pb-8 border-b border-white/10">
                             <span className="text-3xl lg:text-4xl font-black text-white tracking-tighter">{plan.priceRange}</span>
@@ -113,6 +122,12 @@ export function CustomDevPricing() {
                         </div>
                     </LiquidGlassCard>
                 ))}
+            </div>
+
+            <div className="max-w-7xl mx-auto px-6 mt-12">
+                <div className="text-center text-sm text-slate-400 bg-surface/20 border border-white/5 mx-auto max-w-3xl rounded-2xl p-4 shadow-sm flex items-center justify-center">
+                    <span className="text-slate-300 font-medium mr-1">Need a Telegram signal bot or Excel/Google Sheets to Broker automation?</span> That is covered too — ask us in your quote request.
+                </div>
             </div>
         </section>
     );
