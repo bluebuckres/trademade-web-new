@@ -8,7 +8,7 @@ import posthog from "posthog-js";
 
 export function CustomDevHero() {
     return (
-        <section className="relative w-full min-h-[85dvh] flex items-start lg:items-center pb-20 overflow-hidden pt-28 lg:pt-32">
+        <section className="relative w-full min-h-[85dvh] flex items-start lg:items-center pb-12 overflow-hidden pt-28 lg:pt-32">
             <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-accent/20 blur-[150px] rounded-full pointer-events-none -z-10 mix-blend-screen" />
 
             <AsymmetricContainer ratio="40/60">
@@ -25,7 +25,7 @@ export function CustomDevHero() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-slate-400 leading-relaxed mb-10 max-w-lg">
-                        From a rough idea on WhatsApp to a live algorithm on your Zerodha, Upstox, or Angel One — in as little as 5 days. Professional quant developers. Lifetime support.
+                        From a rough idea on WhatsApp to a live, production-grade algorithm — in as little as 5 days. We build in Python, C++, and Rust. We integrate Telegram, OpenAI, and every major Indian broker. You trade. We engineer.
                     </p>
 
                     <div className="flex flex-wrap items-center gap-4">
@@ -47,8 +47,23 @@ export function CustomDevHero() {
                         </MagneticButton>
                     </div>
 
-                    <div className="mt-12 flex items-center gap-2 text-sm text-slate-500 font-medium">
-                        ✓ 500+ algos built <span className="mx-2">·</span> ✓ 20+ broker integrations <span className="mx-2">·</span> ✓ 100% confidential
+                    <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500 font-medium">
+                        <span>500+ algos built</span><span className="hidden sm:inline mx-1 text-slate-700">·</span>
+                        <span>20+ broker APIs</span><span className="hidden sm:inline mx-1 text-slate-700">·</span>
+                        <span>C++ / Python / Rust</span><span className="hidden sm:inline mx-1 text-slate-700">·</span>
+                        <span>100% confidential</span>
+                    </div>
+
+                    <div className="mt-6 flex flex-col gap-2">
+                        <span className="text-xs text-slate-500 font-medium">Live integrations with 20+ brokers:</span>
+                        <div className="flex items-center gap-4 text-slate-400 text-sm font-medium">
+                            <span>Zerodha</span>
+                            <span>Upstox</span>
+                            <span>Angel One</span>
+                            <span>Fyers</span>
+                            <span>AliceBlue</span>
+                            <span>+15 More</span>
+                        </div>
                     </div>
                 </div>
 
@@ -70,18 +85,16 @@ export function CustomDevHero() {
                         <TerminalTypewriter
                             className="bg-transparent shadow-none border-none p-0 text-sm md:text-base text-slate-300"
                             lines={[
-                                "def execute_trade(strategy_params):",
-                                "    # 1. Check Entry Conditions",
-                                "    if rsi_14 < 30 and engulfing_candle:",
-                                "       target_qty = calc_position_size(cap)",
-                                "       ",
-                                "    # 2. Fire to Broker via API",
-                                "       order_id = broker.place_order(",
-                                "           symbol='NIFTY',",
-                                "           qty=target_qty,",
-                                "           type='MARKET'",
-                                "       )",
-                                "       return 'DEPLOYED'"
+                                "# TradeMade — Multi-Broker Execution Engine",
+                                "async def on_signal(signal: TradingSignal):",
+                                "    sentiment = await ai_news_filter(signal.symbol)",
+                                "    if sentiment.score > THRESHOLD:",
+                                "        await asyncio.gather(",
+                                "            broker_zerodha.place_order(signal),",
+                                "            broker_upstox.place_order(signal),",
+                                "            broker_angel.place_order(signal)",
+                                "        )",
+                                "        await telegram_alert(f'✅ {signal.symbol} fired across 3 brokers')"
                             ]}
                             typingSpeed={30}
                             delayBetweenLines={300}
