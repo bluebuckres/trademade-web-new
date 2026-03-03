@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { mainNavLinks, SITE_URL as NAV_SITE_URL } from "@/lib/navigation";
 import Script from "next/script";
 import "./globals.css";
 
@@ -123,7 +124,11 @@ const jsonLd = {
           availableLanguage: ["English", "Hindi"],
         },
       ],
-      sameAs: [],
+      sameAs: [
+        "https://x.com/trademade_in",
+        "https://linkedin.com/company/trademade",
+        "https://instagram.com/trademade.in",
+      ],
     },
     {
       "@type": "WebSite",
@@ -139,6 +144,12 @@ const jsonLd = {
         },
         "query-input": "required name=search_term_string",
       },
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": `${SITE_URL}/#site-navigation`,
+      name: mainNavLinks.map((link) => link.name),
+      url: mainNavLinks.map((link) => `${SITE_URL}${link.href}`),
     },
   ],
 };

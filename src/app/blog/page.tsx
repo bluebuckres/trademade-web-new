@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { Metadata } from "next";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Blog | Algorithmic Trading Insights & Research",
@@ -89,8 +90,12 @@ const blogPosts = [
 
 export default function BlogIndexPage() {
   return (
-    <main className="min-h-screen bg-background pt-32 pb-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <main className="min-h-screen bg-background pb-24">
+      <Breadcrumbs items={[
+        { name: "Home", href: "/" },
+        { name: "Blog", href: "/blog" },
+      ]} />
+      <div className="max-w-7xl mx-auto px-6 pt-8">
         {/* Header Section */}
         <div className="max-w-3xl mb-16 md:mb-24">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-primary w-fit mb-6">

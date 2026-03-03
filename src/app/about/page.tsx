@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { AsymmetricContainer } from "@/components/ui/AsymmetricContainer";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
     title: "About Us",
@@ -15,7 +16,11 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
     return (
-        <div className="flex flex-col w-full overflow-hidden pt-32 pb-20">
+        <div className="flex flex-col w-full overflow-hidden pb-20">
+            <Breadcrumbs items={[
+                { name: "Home", href: "/" },
+                { name: "About Us", href: "/about" },
+            ]} />
             <AsymmetricContainer ratio="60/40" className="mb-20">
                 <div>
                     <h1 className="font-satoshi text-5xl md:text-6xl font-black text-white mb-6">

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { CustomDevHero } from "@/components/custom-development/CustomDevHero";
 import { WhatWeBuild } from "@/components/custom-development/WhatWeBuild";
 import { ProcessSteps } from "@/components/custom-development/ProcessSteps";
@@ -7,9 +6,10 @@ import { CustomDevPricing } from "@/components/custom-development/CustomDevPrici
 import { CustomDevWhy } from "@/components/custom-development/CustomDevWhy";
 import { CustomDevFAQs } from "@/components/custom-development/CustomDevFAQs";
 import { CrossLinks } from "@/components/custom-development/CrossLinks";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
-    title: "Custom Algo Trading Development | Python, C++, Rust | TradeMade",
+    title: "Custom Algo Trading Development | Python, C++, Rust",
     description: "Professional algo trading software development for Indian markets. We build in Python, C++, and Rust. Telegram bots, AI/LLM integration, multi-broker, multi-account. 20+ broker APIs. 500+ algos delivered. SEBI RA compatible.",
     keywords: ["custom algo development India", "trading bot developer", "Python algo coding", "strategy coding service", "quant developer India", "algo deployment Zerodha"],
     openGraph: {
@@ -45,6 +45,10 @@ export default function CustomDevelopmentPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
+            <Breadcrumbs items={[
+                { name: "Home", href: "/" },
+                { name: "Custom Algo Development", href: "/custom-development" },
+            ]} />
             <CustomDevHero />
             <WhatWeBuild />
             <ProcessSteps />

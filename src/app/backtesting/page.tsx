@@ -3,6 +3,7 @@ import { BacktestingHero } from "@/components/backtesting/BacktestingHero";
 import { FeaturesGrid } from "@/components/backtesting/FeaturesGrid";
 import { Pricing } from "@/components/backtesting/Pricing";
 import { BacktestingFAQs } from "@/components/backtesting/BacktestingFAQs";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
     title: "India's Most Realistic Backtesting Engine",
@@ -42,6 +43,10 @@ export default function BacktestingPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
+            <Breadcrumbs items={[
+                { name: "Home", href: "/" },
+                { name: "Backtesting", href: "/backtesting" },
+            ]} />
             <BacktestingHero />
             <FeaturesGrid />
             <Pricing />

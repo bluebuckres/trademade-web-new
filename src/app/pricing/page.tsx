@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
     title: "Pricing & Plans",
@@ -14,7 +15,11 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
     return (
-        <div className="flex flex-col w-full min-h-[80vh] pt-32 pb-20 px-6">
+        <div className="flex flex-col w-full min-h-[80vh] pb-20 px-6">
+            <Breadcrumbs items={[
+                { name: "Home", href: "/" },
+                { name: "Pricing & Plans", href: "/pricing" },
+            ]} />
             <div className="text-center max-w-3xl mx-auto mb-16">
                 <h1 className="font-satoshi text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
                     Simple, <span className="text-primary">Transparent</span> Pricing.
