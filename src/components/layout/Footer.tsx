@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AsymmetricContainer } from "../ui/AsymmetricContainer";
-import { RocketLaunch, WhatsappLogo, EnvelopeSimple, XLogo, LinkedinLogo, InstagramLogo } from "@phosphor-icons/react";
+import { RocketLaunch, WhatsappLogo, XLogo, LinkedinLogo, InstagramLogo } from "@phosphor-icons/react";
 
 export function Footer() {
     return (
@@ -53,22 +53,26 @@ export function Footer() {
                 </div>
 
                 <div className="grid grid-cols-3 gap-8 text-sm">
-                    <div className="flex flex-col gap-3">
-                        <span className="font-bold text-white mb-2">Platform</span>
-                        <Link href="/" className="text-slate-400 hover:text-primary transition-colors">Home</Link>
-                        <Link href="/how-to-use" className="text-slate-400 hover:text-primary transition-colors">How to Use</Link>
-                        <Link href="/backtesting" className="text-slate-400 hover:text-primary transition-colors">Backtesting</Link>
-                        <Link href="/custom-development" className="text-slate-400 hover:text-primary transition-colors">Custom Algo Dev</Link>
-                        <Link href="/multi-broker-beta" className="text-slate-400 hover:text-primary transition-colors">AI Multi-Broker</Link>
-                    </div>
-                    <div className="flex flex-col gap-3">
-                        <span className="font-bold text-white mb-2">Company</span>
-                        <Link href="/about" className="text-slate-400 hover:text-primary transition-colors">About</Link>
-                        <Link href="/pricing" className="text-slate-400 hover:text-primary transition-colors">Pricing</Link>
-                        <Link href="/services" className="text-slate-400 hover:text-primary transition-colors">Services</Link>
-                        <Link href="/blog" className="text-slate-400 hover:text-primary transition-colors">Blog</Link>
-                        <Link href="/contact" className="text-slate-400 hover:text-primary transition-colors">Contact</Link>
-                        <div className="flex items-center gap-3 mt-2">
+                    <nav aria-label="Platform navigation">
+                        <span className="font-bold text-white mb-2 block">Platform</span>
+                        <ul className="flex flex-col gap-3 list-none p-0 m-0 mt-3">
+                            <li><Link href="/" className="text-slate-400 hover:text-primary transition-colors">Home</Link></li>
+                            <li><Link href="/how-to-use" className="text-slate-400 hover:text-primary transition-colors">How to Use</Link></li>
+                            <li><Link href="/backtesting" className="text-slate-400 hover:text-primary transition-colors">Backtesting Engine</Link></li>
+                            <li><Link href="/custom-development" className="text-slate-400 hover:text-primary transition-colors">Custom Algo Development</Link></li>
+                            <li><Link href="/multi-broker-beta" className="text-slate-400 hover:text-primary transition-colors">AI Multi-Broker (Beta)</Link></li>
+                        </ul>
+                    </nav>
+                    <nav aria-label="Company navigation">
+                        <span className="font-bold text-white mb-2 block">Company</span>
+                        <ul className="flex flex-col gap-3 list-none p-0 m-0 mt-3">
+                            <li><Link href="/about" className="text-slate-400 hover:text-primary transition-colors">About Us</Link></li>
+                            <li><Link href="/pricing" className="text-slate-400 hover:text-primary transition-colors">Pricing &amp; Plans</Link></li>
+                            <li><Link href="/services" className="text-slate-400 hover:text-primary transition-colors">Our Services</Link></li>
+                            <li><Link href="/blog" className="text-slate-400 hover:text-primary transition-colors">Blog &amp; Research</Link></li>
+                            <li><Link href="/contact" className="text-slate-400 hover:text-primary transition-colors">Contact Us</Link></li>
+                        </ul>
+                        <div className="flex items-center gap-3 mt-5">
                             <a href="https://x.com/trademade_in" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors" aria-label="Twitter/X">
                                 <XLogo size={18} weight="bold" />
                             </a>
@@ -79,16 +83,26 @@ export function Footer() {
                                 <InstagramLogo size={18} weight="bold" />
                             </a>
                         </div>
-                    </div>
-                    <div className="flex flex-col gap-3">
-                        <span className="font-bold text-white mb-2">Legal</span>
-                        <Link href="/privacy-policy" className="text-slate-400 hover:text-primary transition-colors">Privacy Policy</Link>
-                        <Link href="/terms-and-conditions" className="text-slate-400 hover:text-primary transition-colors">Terms & Conditions</Link>
-                        <Link href="/refund-policy" className="text-slate-400 hover:text-primary transition-colors">Refund Policy</Link>
-                        <Link href="/security" className="text-slate-400 hover:text-primary transition-colors">Security</Link>
-                    </div>
+                    </nav>
+                    <nav aria-label="Legal navigation">
+                        <span className="font-bold text-white mb-2 block">Legal</span>
+                        <ul className="flex flex-col gap-3 list-none p-0 m-0 mt-3">
+                            <li><Link href="/privacy-policy" className="text-slate-400 hover:text-primary transition-colors">Privacy Policy</Link></li>
+                            <li><Link href="/terms-and-conditions" className="text-slate-400 hover:text-primary transition-colors">Terms &amp; Conditions</Link></li>
+                            <li><Link href="/refund-policy" className="text-slate-400 hover:text-primary transition-colors">Refund Policy</Link></li>
+                            <li><Link href="/security" className="text-slate-400 hover:text-primary transition-colors">Security</Link></li>
+                        </ul>
+                    </nav>
                 </div>
             </AsymmetricContainer>
+
+            {/* Copyright */}
+            <div className="w-full h-px bg-white/5 mt-10 mb-6" />
+            <div className="max-w-7xl mx-auto px-6 text-center">
+                <p className="text-slate-600 text-xs">
+                    © {new Date().getFullYear()} TradeMade. All rights reserved.
+                </p>
+            </div>
         </footer>
     );
 }

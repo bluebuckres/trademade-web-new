@@ -8,6 +8,7 @@ import { HowItWorks } from "@/components/home/HowItWorks";
 import { BetaSpotlight } from "@/components/home/BetaSpotlight";
 import { Testimonials } from "@/components/home/Testimonials";
 import { BlogTease } from "@/components/home/BlogTease";
+import { InternalLinks } from "@/components/home/InternalLinks";
 
 export const metadata: Metadata = {
   title: "Backtest. Build. Deploy. Trade Smarter | TradeMade",
@@ -35,6 +36,8 @@ export default function Home() {
       <BetaSpotlight />
       <Testimonials />
       <BlogTease />
+      <InternalLinks />
     </div>
   );
 }
+

@@ -4,6 +4,7 @@ import { BetaFeatures } from "@/components/multi-broker-beta/BetaFeatures";
 import { BetaSteps } from "@/components/multi-broker-beta/BetaSteps";
 import { BetaBenefits } from "@/components/multi-broker-beta/BetaBenefits";
 import { BetaWaitlistForm } from "@/components/multi-broker-beta/BetaWaitlistForm";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
     title: "One Strategy. Multiple Brokers. AI-Powered.",
@@ -42,6 +43,10 @@ export default function MultiBrokerBetaPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
+            <Breadcrumbs items={[
+                { name: "Home", href: "/" },
+                { name: "AI Multi-Broker (Beta)", href: "/multi-broker-beta" },
+            ]} />
             <BetaHero />
             <BetaFeatures />
             <BetaSteps />

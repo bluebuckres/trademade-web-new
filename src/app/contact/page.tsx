@@ -4,6 +4,7 @@ import { ContactInquiries } from "@/components/contact/ContactInquiries";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { Ticker } from "@/components/home/Ticker";
 import { ContactTestimonials } from "@/components/contact/ContactTestimonials";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
     title: 'Contact Us',
@@ -20,6 +21,10 @@ export const metadata: Metadata = {
 export default function ContactPage() {
     return (
         <div className="flex flex-col w-full overflow-hidden">
+            <Breadcrumbs items={[
+                { name: "Home", href: "/" },
+                { name: "Contact Us", href: "/contact" },
+            ]} />
             <ContactHero />
             <ContactInquiries />
             <ContactForm />

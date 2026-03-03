@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import { ServicesHero } from "@/components/services/ServicesHero";
 import { ServiceCards } from "@/components/services/ServiceCards";
 import { ServiceComparison } from "@/components/services/ServiceComparison";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
-    title: "Everything You Need to Trade Algorithmically — Under One Roof",
+    title: "Algo Trading Services for Indian Markets",
     description: "From high-precision backtesting to custom algorithm development and AI multi-broker alignment. Find the right solution for your stage.",
     keywords: ["algo trading services India", "backtesting service", "custom algorithm service", "trading automation India"],
     openGraph: {
@@ -40,6 +41,10 @@ export default function ServicesPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
+            <Breadcrumbs items={[
+                { name: "Home", href: "/" },
+                { name: "Services", href: "/services" },
+            ]} />
             <ServicesHero />
             <ServiceCards />
             <ServiceComparison />

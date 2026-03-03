@@ -8,15 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { List, X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "../ui/MagneticButton";
-
-const navLinks = [
-    { name: "Backtesting", href: "/backtesting" },
-    { name: "Custom Algo Dev", href: "/custom-development" },
-    { name: "AI Multi-Broker", href: "/multi-broker-beta" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Services", href: "/services" },
-    { name: "Blog", href: "/blog" },
-];
+import { headerNavLinks } from "@/lib/navigation";
 
 export function Navbar() {
     const pathname = usePathname();
@@ -31,7 +23,10 @@ export function Navbar() {
         <header className="fixed inset-x-0 top-6 z-50 flex justify-center px-4 md:px-6 pointer-events-none">
             <div className="pointer-events-auto w-full max-w-5xl relative">
                 {/* Main Desktop/Tablet Bar */}
-                <nav className="flex w-full items-center justify-between p-2 rounded-full bg-[#0d1117]/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.5)] z-50 relative">
+                <nav
+                    aria-label="Main navigation"
+                    className="flex w-full items-center justify-between p-2 rounded-full bg-[#0d1117]/60 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.5)] z-50 relative"
+                >
 
                     {/* Logo */}
                     <Link href="/" className="ml-4 font-satoshi font-bold text-xl tracking-tight text-white flex items-center gap-2">
@@ -41,7 +36,7 @@ export function Navbar() {
 
                     {/* Links - Desktop */}
                     <ul className="hidden lg:flex items-center gap-1">
-                        {navLinks.map((link) => {
+                        {headerNavLinks.map((link) => {
                             const isActive = pathname === link.href;
                             return (
                                 <li key={link.name}>
@@ -95,7 +90,7 @@ export function Navbar() {
                             className="absolute top-16 left-0 right-0 bg-[#0d1117]/90 backdrop-blur-3xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl lg:hidden z-40 p-4"
                         >
                             <ul className="flex flex-col gap-2">
-                                {navLinks.map((link) => {
+                                {headerNavLinks.map((link) => {
                                     const isActive = pathname === link.href;
                                     return (
                                         <li key={link.name}>
