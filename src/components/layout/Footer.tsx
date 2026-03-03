@@ -43,12 +43,12 @@ export function Footer() {
 
             <AsymmetricContainer ratio="60/40" className="items-start gap-12">
                 <div className="space-y-4">
-                    <Link href="/" className="font-satoshi font-bold text-2xl tracking-tight text-white flex items-center gap-2 mb-6">
-                        <Image src="/custom_logo.png" alt="TradeMade Logo" width={28} height={28} className="invert object-contain" />
+                    <Link href="/" className="font-satoshi font-bold text-2xl tracking-tight text-white flex items-center gap-2 mb-6" aria-label="TradeMade Home">
+                        <Image src="/custom_logo.png" alt="" aria-hidden="true" width={28} height={28} className="invert object-contain" />
                         TradeMade
                     </Link>
-                    <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
-                        TradeMade is a technology platform for algorithmic strategy development. We are not a SEBI-registered investment advisor. Past backtest performance does not guarantee future returns.
+                    <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
+                        India's premier quantitative infrastructure platform. We empower traders with institutional-grade backtesting, custom algorithmic strategy development, and ultra-fast multi-broker execution.
                     </p>
                 </div>
 
@@ -96,9 +96,12 @@ export function Footer() {
                 </div>
             </AsymmetricContainer>
 
-            {/* Copyright */}
+            {/* Copyright & Disclaimer */}
             <div className="w-full h-px bg-white/5 mt-10 mb-6" />
-            <div className="max-w-7xl mx-auto px-6 text-center">
+            <div className="max-w-7xl mx-auto px-6 flex flex-col items-center text-center gap-4 pb-4">
+                <p className="text-slate-500/80 text-[0.65rem] max-w-4xl leading-relaxed">
+                    Disclaimer: TradeMade is a technology provider and infrastructure platform for algorithmic strategy development. We are not a SEBI-registered investment advisor or broker. Algorithmic trading involves significant risk and is not suitable for every investor. Past performance of any trading system or backtest methodology is not necessarily indicative of future results.
+                </p>
                 <p className="text-slate-600 text-xs">
                     © {new Date().getFullYear()} TradeMade. All rights reserved.
                 </p>
