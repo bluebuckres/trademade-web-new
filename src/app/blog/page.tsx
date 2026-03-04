@@ -28,6 +28,74 @@ export const metadata: Metadata = {
 const blogPosts = [
   {
     title:
+      "How to Build a Trading Algorithm Without Writing a Single Line of Code",
+    excerpt:
+      "A non-technical trader's honest account of going from manual trading to a fully automated algo — no Python, no developer, no coding bootcamp.",
+    slug: "/blog/how-to-build-a-trading-algorithm-without-coding",
+    date: "Oct 15, 2024",
+    category: "Case Study",
+    readTime: "6 min read",
+  },
+  {
+    title: "Options Trading Automation in India: What Works, What Doesn't",
+    excerpt:
+      "An honest guide to automating options strategies on Indian markets — the real complexity, the real risks, and how traders are actually doing it.",
+    slug: "/blog/options-trading-automation-in-india",
+    date: "Nov 03, 2024",
+    category: "Case Study",
+    readTime: "7 min read",
+  },
+  {
+    title:
+      "How a Prop Trading Desk Scaled to 50+ Accounts Without Adding Headcount",
+    excerpt:
+      "The operational reality of running a prop desk in India — and the infrastructure that made consistent multi-account execution actually possible.",
+    slug: "/blog/how-a-prop-trading-desk-scaled-to-50-accounts",
+    date: "Nov 18, 2024",
+    category: "Case Study",
+    readTime: "6 min read",
+  },
+  {
+    title:
+      "I Lost ₹2.3 Lakhs Following Trading Signals. Then I Built My Own Algo.",
+    excerpt:
+      "What paid signal services don't tell you — and how one trader stopped paying for someone else's edge and built his own.",
+    slug: "/blog/lost-money-following-trading-signals",
+    date: "Dec 04, 2024",
+    category: "Case Study",
+    readTime: "6 min read",
+  },
+  {
+    title:
+      "How to Manage Family and Friends' Trading Accounts Without Losing Your Mind",
+    excerpt:
+      "The real operational challenges of running a friends-and-family fund in India — and a setup that actually scales without daily headaches.",
+    slug: "/blog/managing-family-trading-accounts",
+    date: "Aug 12, 2024",
+    category: "Case Study",
+    readTime: "6 min read",
+  },
+  {
+    title: "How to Sell Your Trading Strategy Online in India",
+    excerpt:
+      "A SEBI-compliant way to monetize your algo — and why most Indian traders trying to do this keep hitting the same three walls.",
+    slug: "/blog/how-to-sell-your-trading-strategy-online",
+    date: "Sep 05, 2024",
+    category: "Case Study",
+    readTime: "5 min read",
+  },
+  {
+    title:
+      "Why Your Algo Backtest Looks Profitable But Your Live Trades Aren't",
+    excerpt:
+      "The slippage problem that costs Indian intraday traders ₹15,000–₹20,000 every month — and how to fix it with tick-level data.",
+    slug: "/blog/algo-backtest-vs-live-trades",
+    date: "Sep 22, 2024",
+    category: "Case Study",
+    readTime: "5 min read",
+  },
+  {
+    title:
       "SEBI's New Algo Rules Are Here. Here's Exactly What Changes for You.",
     excerpt:
       "The NSE circular on API operating procedures is the most significant regulatory shift for algo traders since DMA. We break down every requirement.",
@@ -91,10 +159,12 @@ const blogPosts = [
 export default function BlogIndexPage() {
   return (
     <main className="min-h-screen bg-background pb-24">
-      <Breadcrumbs items={[
-        { name: "Home", href: "/" },
-        { name: "Blog", href: "/blog" },
-      ]} />
+      <Breadcrumbs
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Blog", href: "/blog" },
+        ]}
+      />
       <div className="max-w-7xl mx-auto px-6 pt-8">
         {/* Header Section */}
         <div className="max-w-3xl mb-16 md:mb-24">
