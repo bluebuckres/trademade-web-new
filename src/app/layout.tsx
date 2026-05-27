@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { CartInAIChatWidget } from "@/components/CartInAIChatWidget";
 import { mainNavLinks, SITE_URL as NAV_SITE_URL } from "@/lib/navigation";
 import Script from "next/script";
 import "./globals.css";
@@ -193,6 +194,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <CartInAIChatWidget />
       </body>
     </html>
   );
