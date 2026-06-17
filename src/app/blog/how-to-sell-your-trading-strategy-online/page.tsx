@@ -39,6 +39,10 @@ export default function MarketplaceCaseStudy() {
     headline:
       "How to Sell Your Trading Strategy Online in India (Without Giving Away Your Code)",
     datePublished: "2024-09-05T00:00:00+00:00",
+    "dateModified": "2024-06-16T00:00:00+00:00",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/how-to-sell-your-trading-strategy-online" },
+    "inLanguage": "en-IN",
+    "wordCount": 1670,
     author: { "@type": "Person", name: "TradeMade Research" },
     publisher: {
       "@type": "Organization",

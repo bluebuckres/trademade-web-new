@@ -38,6 +38,10 @@ export default function BacktestFlawsPost() {
     "@type": "Article",
     "headline": "Why 90% of Backtests Lie — And How to Fix Yours",
     "datePublished": "2023-12-12T00:00:00+00:00",
+    "dateModified": "2024-06-16T00:00:00+00:00",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/why-90-percent-of-backtests-lie-and-how-to-fix-yours" },
+    "inLanguage": "en-IN",
+    "wordCount": 2295,
     "author": { "@type": "Organization", "name": "TradeMade Research Desk" },
     "publisher": { "@type": "Organization", "name": "TradeMade", "logo": { "@type": "ImageObject", "url": "https://trademade.in/custom_logo.png" } }
   };

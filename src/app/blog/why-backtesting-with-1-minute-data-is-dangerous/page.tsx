@@ -22,8 +22,12 @@ export default function BlogPost() {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "Why Backtesting with 1-Minute Data is Dangerous",
-        "image": "https://trademade.in/1-min-data-banner.png",
+        "image": "https://trademade.in/1-min-data-banner.webp",
         "datePublished": "2024-03-15T00:00:00+00:00",
+        "dateModified": "2024-06-16T00:00:00+00:00",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/why-backtesting-with-1-minute-data-is-dangerous" },
+        "inLanguage": "en-IN",
+        "wordCount": 1180,
         "author": { "@type": "Organization", "name": "TradeMade Research Desk" },
         "publisher": { "@type": "Organization", "name": "TradeMade", "logo": { "@type": "ImageObject", "url": "https://trademade.in/custom_logo.png" } }
     };
@@ -64,7 +68,7 @@ export default function BlogPost() {
                 {/* Hero Banner Image */}
                 <div className="mb-12 rounded-2xl overflow-hidden border border-white/10 relative aspect-[1200/630] shadow-2xl">
                     <Image
-                        src="/1-min-data-banner.png"
+                        src="/1-min-data-banner.webp"
                         alt="Why Backtesting with 1-Minute Data is Dangerous"
                         fill
                         className="object-cover"

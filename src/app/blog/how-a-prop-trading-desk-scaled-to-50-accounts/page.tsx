@@ -40,6 +40,10 @@ export default function PropDeskCaseStudy() {
     headline:
       "How a Prop Trading Desk Scaled to 50+ Accounts Without Adding Headcount",
     datePublished: "2024-11-18T00:00:00+00:00",
+    "dateModified": "2024-06-16T00:00:00+00:00",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/how-a-prop-trading-desk-scaled-to-50-accounts" },
+    "inLanguage": "en-IN",
+    "wordCount": 1919,
     author: { "@type": "Person", name: "TradeMade Research" },
     publisher: {
       "@type": "Organization",

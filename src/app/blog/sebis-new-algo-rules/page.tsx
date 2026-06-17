@@ -39,6 +39,10 @@ export default function SebiAlgoRulesPost() {
     headline:
       "SEBI's New Algo Rules Are Here. Here's Exactly What Changes for You.",
     datePublished: "2025-07-25T00:00:00+00:00",
+    "dateModified": "2024-06-16T00:00:00+00:00",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/sebis-new-algo-rules" },
+    "inLanguage": "en-IN",
+    "wordCount": 2581,
     author: { "@type": "Organization", name: "TradeMade Compliance Desk" },
     publisher: {
       "@type": "Organization",

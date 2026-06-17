@@ -37,6 +37,10 @@ export default function OptionsCaseStudy() {
     "@type": "Article",
     headline: "Options Trading Automation in India: What Works, What Doesn't",
     datePublished: "2024-11-03T00:00:00+00:00",
+    "dateModified": "2024-06-16T00:00:00+00:00",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/options-trading-automation-in-india" },
+    "inLanguage": "en-IN",
+    "wordCount": 2052,
     author: { "@type": "Person", name: "TradeMade Research" },
     publisher: {
       "@type": "Organization",

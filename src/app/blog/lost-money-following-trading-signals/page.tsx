@@ -39,6 +39,10 @@ export default function SignalsCaseStudy() {
     headline:
       "I Lost ₹2.3 Lakhs Following Trading Signals. Then I Built My Own Algo.",
     datePublished: "2024-12-04T00:00:00+00:00",
+    "dateModified": "2024-06-16T00:00:00+00:00",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/lost-money-following-trading-signals" },
+    "inLanguage": "en-IN",
+    "wordCount": 2014,
     author: { "@type": "Person", name: "TradeMade Research" },
     publisher: {
       "@type": "Organization",

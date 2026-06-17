@@ -35,6 +35,10 @@ export default function FamilyFundCaseStudy() {
     headline:
       "How to Manage Family and Friends' Trading Accounts Without Losing Your Mind",
     datePublished: "2024-08-12T00:00:00+00:00",
+    "dateModified": "2024-06-16T00:00:00+00:00",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/managing-family-trading-accounts" },
+    "inLanguage": "en-IN",
+    "wordCount": 1847,
     author: { "@type": "Person", name: "TradeMade Research" },
     publisher: {
       "@type": "Organization",

@@ -22,12 +22,17 @@ export function Hero() {
                         SEBI RA-Compatible Platform
                     </div>
 
-                    <h1 className="font-satoshi text-5xl md:text-7xl font-black tracking-tighter leading-[1.05] text-white mb-6">
+                    <h1
+                        className="font-satoshi text-5xl md:text-7xl font-black tracking-tighter leading-[1.05] text-white mb-6"
+                        title="Algorithmic Trading Platform India — Backtest, Build, and Deploy Trading Algorithms on NSE & BSE"
+                    >
                         Backtest.
                         <br />
                         <span className="text-slate-500">Build.</span>
                         <br />
                         <span className="text-primary text-glow">Deploy.</span>
+                        {/* sr-only subtitle for SEO — invisible to users, readable by Google */}
+                        <span className="sr-only"> — India&apos;s most precise algorithmic trading platform for low-latency system design, custom algo development in Python and C++, and backtesting for NSE/BSE markets.</span>
                     </h1>
 
                     <p className="text-lg md:text-xl text-slate-400 leading-relaxed mb-10 max-w-lg">

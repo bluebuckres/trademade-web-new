@@ -1,0 +1,123 @@
+# TradeMade — India's Leading Algorithmic Trading Platform
+
+> TradeMade (https://trademade.in) is India's premier algorithmic trading infrastructure platform, specializing in low-latency trading system design, custom algorithm development, high-precision backtesting, and multi-broker execution for Indian markets (NSE/BSE).
+
+## Company Overview
+
+- **Name**: TradeMade
+- **Founded**: 2023
+- **Location**: Kolkata, West Bengal, India
+- **Website**: https://trademade.in
+- **Email**: connect@trademade.in
+- **WhatsApp**: +91 7908158639
+- **Social**: @trademade_in (X/Twitter), linkedin.com/company/trademade
+
+## What We Do
+
+TradeMade builds professional algorithmic trading infrastructure for Indian traders, SEBI Registered Advisors (RAs), prop desks, and institutional clients. We specialize in:
+
+1. **Low-Latency Trading Systems** — C++, Rust, Python execution engines for HFT and latency-sensitive strategies
+2. **Custom Algorithm Development** — End-to-end algo development from strategy description to live deployment
+3. **High-Precision Backtesting** — Tick-level data, real slippage modeling, 10+ years of NSE/BSE history
+4. **Multi-Broker Execution** — Deploy one strategy across Zerodha, Upstox, Angel One, and 20+ Indian brokers simultaneously
+5. **SEBI-Compliant Infrastructure** — All systems are built to comply with SEBI's algo trading regulations
+
+## Key Differentiators
+
+- **Not a no-code tool** — We write production-grade code (Python, C++, Rust), not fragile scripts
+- **Tick-level backtesting** — Our engine uses actual tick data, not OHLC candles, modeling real slippage and impact costs
+- **Low-latency expertise** — We build execution engines for sub-millisecond order routing
+- **Full source code handover** — Clients own all code after delivery
+- **NDA-protected** — We sign mutual NDAs before any strategy discussion
+- **Indian market specialists** — Deep expertise in NSE/BSE microstructure, SEBI regulations, Indian broker APIs
+
+## Statistics
+
+- 2,100+ traders served
+- 50+ institutional clients
+- 500+ trading algorithms delivered
+- 20+ Indian broker API integrations
+- Strategies across equity, F&O (options, futures), multi-leg options, pairs trading, arbitrage
+
+## Services
+
+### Backtesting Engine
+URL: https://trademade.in/backtesting
+- 10+ years of tick-level NSE/BSE data
+- Real slippage, impact cost, and brokerage modeling
+- Options expiry handling, strike selection, Greeks computation
+- Walk-forward optimization to prevent overfitting
+- Portfolio-level Sharpe and correlation analysis
+- Free tier available
+
+### Custom Algo Development
+URL: https://trademade.in/custom-development
+- Languages: Python (primary), C++, Rust (for HFT), Pine Script, AFL
+- Broker APIs: Zerodha Kite, Upstox, Angel One, Shoonya, FYERS, Dhan, and 15+ more
+- Features: Telegram bots, OpenAI/LLM integration, multi-account execution
+- Process: Intake form → NDA → Scoping → Development → Backtesting → Deployment → Handover
+- Typical delivery: 7–21 days depending on complexity
+- Pricing: Custom quote based on strategy complexity
+
+### AI Multi-Broker Platform (Beta)
+URL: https://trademade.in/multi-broker-beta
+- Deploy one strategy to multiple Indian brokers simultaneously
+- AI news sentiment risk management (auto-halt on breaking news)
+- Synchronized order execution across accounts
+- Real-time P&L aggregation
+
+### Low-Latency Trading Systems
+URL: https://trademade.in/low-latency-trading
+- C++ execution engines with sub-millisecond order routing
+- Rust-based order management systems
+- Co-location support for NSE/BSE proximity servers
+- FIX protocol integration
+- Order book analysis and market microstructure research
+
+## Target Clients
+
+- **Retail traders** who want to automate their manual strategies
+- **SEBI Registered Advisors (RAs)** needing compliant algo infrastructure
+- **Prop trading desks** scaling to 50+ accounts
+- **Quant funds** requiring custom backtesting and execution infrastructure
+- **Individual quants** with strategy ideas but no coding background
+- **HFT/low-latency firms** needing C++/Rust execution system development
+
+## Blog & Research
+URL: https://trademade.in/blog
+
+Topics covered:
+- Algorithmic trading education for Indian markets
+- Backtesting methodology and common mistakes
+- SEBI regulations for algo trading
+- Python execution engine development
+- Options trading automation
+- Case studies from real client implementations
+
+## Frequently Asked Questions
+
+**Q: Do I need to know coding?**
+A: No. Most clients are traders, not developers. Describe your strategy in plain language and we handle the coding.
+
+**Q: What languages do you use?**
+A: Python for most strategies. C++ and Rust for low-latency/HFT requirements. Pine Script and AFL for specific platforms.
+
+**Q: Which brokers do you support?**
+A: Zerodha (Kite), Upstox, Angel One, Shoonya, FYERS, Dhan, Alice Blue, Motilal Oswal, and 15+ more.
+
+**Q: Is my strategy safe with you?**
+A: We sign a mutual NDA before any discussion. Source code ownership transfers to you on full payment.
+
+**Q: How is TradeMade different from Streak or Tradetron?**
+A: Streak and Tradetron are no-code/low-code tools for retail strategy automation. TradeMade writes production-grade custom code — we handle institutional-level complexity, low-latency requirements, and strategies that go far beyond what drag-and-drop tools can support. Our backtesting uses tick data vs their candle-based approach.
+
+**Q: What is your pricing?**
+A: Backtesting engine has a free tier. Custom development is quoted per project. Contact us at connect@trademade.in.
+
+## Contact
+
+- Website: https://trademade.in/contact
+- Email: connect@trademade.in
+- WhatsApp: https://wa.me/917908158639
+- Book a call: https://trademade.in (click "Book a Quick Call")
+- Office hours: Mon–Fri, 9 AM – 5 PM IST (WhatsApp support during market hours)

@@ -21,8 +21,12 @@ export default function BlogPost() {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "What Is Algorithmic Trading? Why Backtesting First Saves You Money",
-        "image": "https://trademade.in/algo-trading-banner.png",
+        "image": "https://trademade.in/algo-trading-banner.webp",
         "datePublished": "2024-03-10T00:00:00+00:00",
+        "dateModified": "2024-06-16T00:00:00+00:00",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/what-is-algorithmic-trading" },
+        "inLanguage": "en-IN",
+        "wordCount": 1644,
         "author": { "@type": "Organization", "name": "TradeMade Quant Team" },
         "publisher": { "@type": "Organization", "name": "TradeMade", "logo": { "@type": "ImageObject", "url": "https://trademade.in/custom_logo.png" } }
     };
@@ -63,7 +67,7 @@ export default function BlogPost() {
                 {/* Hero Banner Image */}
                 <div className="mb-12 rounded-2xl overflow-hidden border border-white/10 relative aspect-[1200/630] shadow-2xl">
                     <Image
-                        src="/algo-trading-banner.png"
+                        src="/algo-trading-banner.webp"
                         alt="What Is Algorithmic Trading — And Why Should Every Indian Trader Backtest First?"
                         fill
                         className="object-cover"

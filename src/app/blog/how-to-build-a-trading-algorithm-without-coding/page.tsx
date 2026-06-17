@@ -35,6 +35,10 @@ export default function NoCodeCaseStudy() {
     headline:
       "How to Build a Trading Algorithm Without Writing a Single Line of Code",
     datePublished: "2024-10-15T00:00:00+00:00",
+    "dateModified": "2024-06-16T00:00:00+00:00",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/how-to-build-a-trading-algorithm-without-coding" },
+    "inLanguage": "en-IN",
+    "wordCount": 1833,
     author: { "@type": "Person", name: "TradeMade Research" },
     publisher: {
       "@type": "Organization",

@@ -22,6 +22,10 @@ export default function PythonExecutionPost() {
         "@type": "Article",
         "headline": "Building a Python Execution Engine from Scratch",
         "datePublished": "2024-03-10T00:00:00+00:00",
+        "dateModified": "2024-06-16T00:00:00+00:00",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/building-a-python-execution-engine-from-scratch" },
+        "inLanguage": "en-IN",
+        "wordCount": 1913,
         "author": { "@type": "Organization", "name": "TradeMade Engineering" },
         "publisher": { "@type": "Organization", "name": "TradeMade", "logo": { "@type": "ImageObject", "url": "https://trademade.in/custom_logo.png" } }
     };

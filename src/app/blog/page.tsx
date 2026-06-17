@@ -122,7 +122,7 @@ const blogPosts = [
     category: "Quant Research",
     readTime: "7 min read",
     featured: true,
-    image: "/1-min-data-banner.png",
+    image: "/1-min-data-banner.webp",
   },
   {
     title: "Building a Python Execution Engine from Scratch",
@@ -152,7 +152,7 @@ const blogPosts = [
     category: "Educational",
     readTime: "8 min read",
     featured: true,
-    image: "/algo-trading-banner.png",
+    image: "/algo-trading-banner.webp",
   },
 ];
 

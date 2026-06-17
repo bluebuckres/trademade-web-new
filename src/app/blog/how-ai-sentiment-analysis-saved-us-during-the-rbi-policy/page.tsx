@@ -21,6 +21,10 @@ export default function RbiPolicyAIPost() {
         "@type": "Article",
         "headline": "How AI Sentiment Analysis Saved Us During the RBI Policy",
         "datePublished": "2024-03-02T00:00:00+00:00",
+        "dateModified": "2024-06-16T00:00:00+00:00",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://trademade.in/blog/how-ai-sentiment-analysis-saved-us-during-the-rbi-policy" },
+        "inLanguage": "en-IN",
+        "wordCount": 1760,
         "author": { "@type": "Organization", "name": "TradeMade AI Team" },
         "publisher": { "@type": "Organization", "name": "TradeMade", "logo": { "@type": "ImageObject", "url": "https://trademade.in/custom_logo.png" } }
     };
